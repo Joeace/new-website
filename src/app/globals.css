@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+/*
+ * Mota Content Media design tokens.
+ *
+ * Every value the site uses is defined here so colour, type, spacing, depth
+ * and motion stay consistent. Tailwind turns each token into utilities,
+ * e.g. --color-deep -> bg-deep / text-deep, --shadow-soft -> shadow-soft.
+ *
+ * Contrast on white (WCAG 2.2):
+ *   midnight 15.6:1, deep 11.1:1, slate 7.1:1  -> safe for any text
+ *   electric 3.9:1                              -> large text (24px+, or 19px+ bold),
+ *                                                  icons, focus rings and accents only
+ *   silver 1.3:1                                -> decorative surfaces and dividers only
+ */
+
+@theme {
+  /* ---------- Colour ---------- */
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-ice: #f4f7fb;
+  --color-silver: #dce2ea;
+  --color-electric: #2f80ed;
+  --color-deep: #123b70;
+  --color-midnight: #17243a;
+  --color-slate: #4a5872; /* secondary text, derived from midnight */
+  --color-deep-hover: #0d2d57;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  /* ---------- Typography ---------- */
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
+
+  /* Fluid display sizes scale smoothly between phone and wide desktop */
+  --text-display: clamp(2.75rem, 1.6rem + 5.2vw, 6rem);
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.035em;
+  --text-h1: clamp(2.25rem, 1.5rem + 3.4vw, 4.25rem);
+  --text-h1--line-height: 1.06;
+  --text-h1--letter-spacing: -0.03em;
+  --text-h2: clamp(1.875rem, 1.35rem + 2.2vw, 3.25rem);
+  --text-h2--line-height: 1.1;
+  --text-h2--letter-spacing: -0.025em;
+  --text-h3: clamp(1.375rem, 1.15rem + 0.9vw, 1.875rem);
+  --text-h3--line-height: 1.2;
+  --text-h3--letter-spacing: -0.015em;
+  --text-lead: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
+  --text-lead--line-height: 1.6;
+  --text-eyebrow: 0.8125rem;
+  --text-eyebrow--line-height: 1.4;
+  --text-eyebrow--letter-spacing: 0.14em;
+
+  /* ---------- Layout ---------- */
+  --container-content: 80rem; /* 1280px */
+  --container-narrow: 52rem; /* 832px, comfortable reading width */
+  --spacing-gutter: clamp(1.25rem, 0.6rem + 2.8vw, 3rem);
+  --spacing-section: clamp(5rem, 3rem + 8vw, 10rem);
+  --spacing-section-sm: clamp(3.5rem, 2.5rem + 4vw, 6rem);
+
+  /* ---------- Shape ---------- */
+  --radius-sm: 0.625rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+  --radius-pill: 9999px;
+
+  /* ---------- Depth (midnight-tinted, layered, never harsh) ---------- */
+  --shadow-hairline: 0 0 0 1px rgb(23 36 58 / 0.06);
+  --shadow-soft: 0 1px 2px rgb(23 36 58 / 0.04), 0 8px 24px -8px rgb(23 36 58 / 0.08);
+  --shadow-lifted: 0 2px 4px rgb(23 36 58 / 0.04), 0 24px 48px -16px rgb(23 36 58 / 0.14);
+  --shadow-glow: 0 12px 32px -12px rgb(47 128 237 / 0.45);
+
+  /* ---------- Motion ---------- */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* Shared motion timings, also read by the Motion for React components */
+:root {
+  --duration-fast: 160ms;
+  --duration-base: 320ms;
+  --duration-slow: 700ms;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-white font-sans text-midnight antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  ::selection {
+    @apply bg-electric text-white;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-electric);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
