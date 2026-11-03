@@ -1,0 +1,6 @@
+# Cloudflare Pages configuration, read automatically on every deploy.
+# The build command itself is set in the Cloudflare dashboard:
+#   Settings -> Build -> Build command: npm run build
+name = "new-website"
+compatibility_date = "2026-11-01"
+pages_build_output_dir = "out"

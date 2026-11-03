@@ -35,11 +35,14 @@ npm run dev        # http://localhost:3000
 
 ## Deployment (Cloudflare)
 
-Pushing to `main` triggers a Cloudflare build. The project must use:
+`main` is the only branch. Every push to it triggers a Cloudflare Pages production build.
 
-- **Build command:** `npm run build`
-- **Build output directory:** `out`
+- **Build command:** `npm run build` (set in the Cloudflare dashboard under Settings → Build)
+- **Build output directory:** `out` (set in `wrangler.toml`, which overrides the dashboard)
 - **Node version:** 22 (read from `.nvmrc`; or set `NODE_VERSION=22`)
+- **Production branch:** `main`
+
+If a deploy finishes in seconds and the site is blank, the build command is missing: Cloudflare uploaded the repository instead of the built site.
 
 Because the site is a static export, server-only Next.js features (Server Actions, route handlers, `next/image` optimisation, redirects and headers in `next.config.ts`) are unavailable. Optimise images before committing them, and use a Cloudflare Function for anything that needs a server, such as the contact form.
 
