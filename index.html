@@ -1,1 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brightwave Media | Digital Media Marketing</title>
+  <meta name="description" content="Brightwave Media is a digital media marketing agency helping brands grow through strategy, content, social, and paid media." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b0f1a;
+      --bg-soft: #121829;
+      --text: #f4f6fb;
+      --muted: #a3acc2;
+      --primary: #6c5ce7;
+      --accent: #00d2d3;
+      --border: rgba(255, 255, 255, 0.08);
+      --radius: 14px;
+      --max: 1200px;
+    }
 
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ---------- Header / Nav ---------- */
+    .header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      background: rgba(11, 15, 26, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: grid;
+      place-items: center;
+      font-size: 1rem;
+      color: #fff;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      list-style: none;
+    }
+    .nav-links a {
+      display: block;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .nav-links .nav-cta {
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary), #8e7bff);
+      margin-left: 8px;
+    }
+    .nav-links .nav-cta:hover { background: linear-gradient(135deg, #7d6ef0, #9d8cff); }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      width: 42px;
+      height: 42px;
+      cursor: pointer;
+      color: var(--text);
+    }
+    .menu-toggle span,
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      display: block;
+      width: 20px;
+      height: 2px;
+      margin: 0 auto;
+      background: currentColor;
+      border-radius: 2px;
+      position: relative;
+      transition: transform 0.25s, background 0.25s;
+    }
+    .menu-toggle span::before,
+    .menu-toggle span::after { content: ""; position: absolute; left: 0; }
+    .menu-toggle span::before { top: -6px; }
+    .menu-toggle span::after { top: 6px; }
+    .menu-toggle[aria-expanded="true"] span { background: transparent; }
+    .menu-toggle[aria-expanded="true"] span::before { transform: translateY(6px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"] span::after { transform: translateY(-6px) rotate(-45deg); }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 24px 80px;
+      isolation: isolate;
+      overflow: hidden;
+    }
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      z-index: -1;
+      opacity: 0.55;
+    }
+    .hero::before {
+      width: 520px; height: 520px;
+      background: var(--primary);
+      top: -120px; left: -160px;
+    }
+    .hero::after {
+      width: 440px; height: 440px;
+      background: var(--accent);
+      bottom: -140px; right: -120px;
+      opacity: 0.35;
+    }
+    .hero-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .eyebrow .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(0, 210, 211, 0.2);
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      font-weight: 800;
+      margin-bottom: 22px;
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #a29bfe, var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero p.lead {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 36px;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 48px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 26px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #8e7bff);
+      color: #fff;
+      box-shadow: 0 10px 30px rgba(108, 92, 231, 0.35);
+    }
+    .btn-primary:hover { box-shadow: 0 14px 36px rgba(108, 92, 231, 0.5); }
+    .btn-ghost {
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04);
+    }
+    .btn-ghost:hover { background: rgba(255, 255, 255, 0.08); }
+
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+    .stat strong {
+      display: block;
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .stat span { font-size: 0.9rem; color: var(--muted); }
+
+    /* Hero visual card */
+    .hero-visual {
+      position: relative;
+      background: linear-gradient(160deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 28px 28px 72px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+    }
+    .card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+    .card-head h3 { font-size: 1rem; font-weight: 600; }
+    .badge {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(0, 210, 211, 0.15);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      height: 160px;
+      margin-bottom: 24px;
+    }
+    .bar {
+      flex: 1;
+      border-radius: 8px 8px 4px 4px;
+      background: linear-gradient(180deg, var(--accent), var(--primary));
+      opacity: 0.9;
+      transform-origin: bottom;
+      animation: grow 1.1s ease-out both;
+    }
+    .bar:nth-child(1) { height: 35%; animation-delay: 0.05s; }
+    .bar:nth-child(2) { height: 50%; animation-delay: 0.1s; }
+    .bar:nth-child(3) { height: 42%; animation-delay: 0.15s; }
+    .bar:nth-child(4) { height: 64%; animation-delay: 0.2s; }
+    .bar:nth-child(5) { height: 58%; animation-delay: 0.25s; }
+    .bar:nth-child(6) { height: 80%; animation-delay: 0.3s; }
+    .bar:nth-child(7) { height: 96%; animation-delay: 0.35s; }
+    @keyframes grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+
+    .channels { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .channel {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+    }
+    .channel .icon {
+      width: 34px; height: 34px;
+      border-radius: 9px;
+      display: grid;
+      place-items: center;
+      font-size: 1rem;
+      background: rgba(108, 92, 231, 0.18);
+    }
+    .channel small { display: block; color: var(--muted); font-size: 0.75rem; }
+    .channel b { font-size: 0.95rem; }
+    .up { color: #2ee59d; font-size: 0.8rem; font-weight: 600; }
+
+    .floating {
+      position: absolute;
+      left: -36px;
+      bottom: -26px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      background: #fff;
+      color: #111827;
+      border-radius: 14px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+      animation: float 4s ease-in-out infinite;
+    }
+    .floating .avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: grid; place-items: center;
+      color: #fff; font-weight: 700; font-size: 0.9rem;
+    }
+    .floating small { display: block; color: #6b7280; font-size: 0.75rem; }
+    .floating b { font-size: 0.9rem; }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+    /* Trusted-by strip */
+    .trusted {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .trusted p {
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+    .logos {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 18px 48px;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 960px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 64px; }
+      .hero-visual { max-width: 520px; margin: 0 auto; width: 100%; }
+      .floating { left: 16px; }
+    }
+
+    @media (max-width: 860px) {
+      .menu-toggle { display: block; }
+      .nav-links {
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        padding: 16px;
+        background: rgba(11, 15, 26, 0.97);
+        border-bottom: 1px solid var(--border);
+        display: none;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 14px; }
+      .nav-links .nav-cta { margin: 8px 0 0; text-align: center; }
+    }
+
+    @media (max-width: 520px) {
+      .nav { padding: 0 16px; }
+      .hero { padding: 110px 16px 64px; }
+      .stats { gap: 24px; }
+      .channels { grid-template-columns: 1fr; }
+      .hero-visual { padding: 20px 20px 64px; }
+      .btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#" class="logo" aria-label="Brightwave Media home">
+        <span class="logo-mark" aria-hidden="true">B</span>
+        Brightwave Media
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Media Services</a></li>
+        <li><a href="#agent">Contact an Agent</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <span class="eyebrow"><span class="dot"></span> Full-service digital media marketing</span>
+          <h1>Turn attention into <span class="gradient-text">measurable growth.</span></h1>
+          <p class="lead">
+            We plan, create, and run campaigns across social, search, video, and streaming,
+            so your brand reaches the right people and every dollar shows its return.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#agent" class="btn btn-primary">
+              Talk to an Agent
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#services" class="btn btn-ghost">Explore Services</a>
+          </div>
+
+          <div class="stats">
+            <div class="stat"><strong>250+</strong><span>Brands grown</span></div>
+            <div class="stat"><strong>3.8x</strong><span>Average ROAS</span></div>
+            <div class="stat"><strong>12M</strong><span>Monthly impressions</span></div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="card-head">
+            <h3>Campaign Performance</h3>
+            <span class="badge">+142% this quarter</span>
+          </div>
+          <div class="chart">
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+          <div class="channels">
+            <div class="channel">
+              <div class="icon">📱</div>
+              <div><small>Social</small><b>1.2M reach</b> <span class="up">▲ 38%</span></div>
+            </div>
+            <div class="channel">
+              <div class="icon">🔍</div>
+              <div><small>Search</small><b>4.6% CTR</b> <span class="up">▲ 21%</span></div>
+            </div>
+            <div class="channel">
+              <div class="icon">🎬</div>
+              <div><small>Video</small><b>820K views</b> <span class="up">▲ 54%</span></div>
+            </div>
+            <div class="channel">
+              <div class="icon">✉️</div>
+              <div><small>Email</small><b>31% open</b> <span class="up">▲ 12%</span></div>
+            </div>
+          </div>
+
+          <div class="floating">
+            <div class="avatar">JS</div>
+            <div><small>Your dedicated agent</small><b>Online now</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trusted" aria-label="Trusted by">
+      <p>Trusted by growing brands</p>
+      <div class="logos">
+        <span>NORTHPEAK</span>
+        <span>Lumio</span>
+        <span>vertex&amp;co</span>
+        <span>ORBITAL</span>
+        <span>Kindred</span>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const links = document.getElementById('nav-links');
+
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+
+    links.querySelectorAll('a').forEach((a) =>
+      a.addEventListener('click', () => {
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      })
+    );
+  </script>
+</body>
+</html>
