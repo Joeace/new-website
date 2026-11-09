@@ -24,6 +24,12 @@ const variants = {
     "hover:-translate-y-px hover:border-interactive-hover hover:bg-mist hover:text-interactive-hover " +
     "active:translate-y-0 active:border-interactive-active active:text-interactive-active " +
     "disabled:translate-y-0 disabled:border-silver disabled:bg-white disabled:text-muted",
+  /* For dark surfaces such as deep blue panels and midnight sections. */
+  inverse:
+    "rounded-pill bg-white text-deep shadow-soft " +
+    "hover:-translate-y-px hover:bg-ice " +
+    "active:translate-y-0 active:bg-silver " +
+    "disabled:translate-y-0 disabled:bg-white/40 disabled:text-deep/60",
   text:
     "rounded-xs text-interactive underline-offset-[6px] decoration-[1.5px] " +
     "hover:text-interactive-hover hover:underline active:text-interactive-active " +

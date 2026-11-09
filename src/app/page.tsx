@@ -12,7 +12,7 @@ import { site } from "@/content/site";
  */
 export default function HomePage() {
   return (
-    <main className="relative isolate flex flex-1 items-center overflow-hidden bg-glow py-section">
+    <div className="relative isolate flex flex-1 items-center overflow-hidden bg-glow py-section">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-grid" />
       <Container>
         <Reveal>
@@ -35,6 +35,6 @@ export default function HomePage() {
           </Text>
         </Reveal>
       </Container>
-    </main>
+    </div>
   );
 }

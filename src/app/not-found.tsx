@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <main className="flex flex-1 items-center py-section">
+    <div className="flex flex-1 items-center py-section">
       <Container width="narrow">
         <Eyebrow>Error 404</Eyebrow>
         <Heading as="h1" className="mt-stack-sm">
@@ -23,6 +23,6 @@ export default function NotFound() {
           Back to home
         </Button>
       </Container>
-    </main>
+    </div>
   );
 }

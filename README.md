@@ -55,14 +55,29 @@ src/
     layout.tsx          Fonts, metadata, MotionProvider
     design-system/      page.dev.tsx: internal preview, `npm run dev` only
   components/
+    navigation/         Header, DesktopNavigation, ServicesMegaMenu, MobileNavigation,
+                        NavigationLink, Logo
+    sections/           PageIntro (shared inner-page opening)
     ui/                 Heading, Accent, Eyebrow, Text, Button, Card, Chip, Container,
                         Section, SectionHeading, Grid, Divider, MediaFrame, IconFrame
     cards/              Service, Feature, Portfolio, Testimonial, Industry, Article
     motion/             MotionProvider, Reveal
-  content/              Typed site content and brand facts
+  content/              Typed site content: site.ts, navigation.ts, services.ts
   lib/                  Fonts, motion tokens for JS, utilities
-public/                 Static assets (brand files, optimised images)
+public/
+  brand/                mcm-logo-source.png (original, unaltered) and mcm-logo.webp (web copy)
 ```
+
+## Routes
+
+| Route | Status |
+| --- | --- |
+| `/` | Holding page (home page phase next) |
+| `/services/` | Six service cards |
+| `/services/[slug]/` | One page per service, generated from `content/services.ts` |
+| `/about/`, `/work/`, `/insights/`, `/contact/`, `/create-your-service/` | Planned pages showing an "in development" notice |
+
+Navigation items and services are defined once in `src/content/` and shared by the header, mega menu, mobile menu and pages.
 
 Run `npm run dev` and open `/design-system/` to see every token and component. Files ending in `.dev.tsx` are routes only in development and are never built into the live site.
 

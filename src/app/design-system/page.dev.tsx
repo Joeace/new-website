@@ -97,7 +97,7 @@ export default function DesignSystemPage() {
   if (process.env.NODE_ENV === "production") notFound();
 
   return (
-    <main>
+    <>
       <Section tone="glow" spacing="md" grid>
         <Container>
           <SectionHeading
@@ -351,6 +351,6 @@ export default function DesignSystemPage() {
           />
         </Container>
       </Section>
-    </main>
+    </>
   );
 }
