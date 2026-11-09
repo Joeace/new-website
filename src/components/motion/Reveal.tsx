@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "motion/react";
 import type { ReactNode } from "react";
+import { reveal } from "@/lib/motion";
 
 type RevealProps = {
   children: ReactNode;
@@ -16,7 +17,7 @@ type RevealProps = {
  * Fades and lifts content into view once, as it enters the viewport.
  * With reduced motion requested, content renders in place with no animation.
  */
-export function Reveal({ children, delay = 0, y = 24, className }: RevealProps) {
+export function Reveal({ children, delay = 0, y = reveal.distance, className }: RevealProps) {
   const reduceMotion = useReducedMotion();
 
   if (reduceMotion) {
@@ -29,7 +30,7 @@ export function Reveal({ children, delay = 0, y = 24, className }: RevealProps) 
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "0px 0px -10% 0px" }}
-      transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: reveal.duration, delay, ease: reveal.ease }}
     >
       {children}
     </motion.div>

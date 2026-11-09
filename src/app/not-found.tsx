@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow, Heading } from "@/components/ui/Heading";
+import { Text } from "@/components/ui/Text";
 
 export const metadata: Metadata = {
   title: "Page not found",
@@ -11,14 +12,14 @@ export default function NotFound() {
   return (
     <main className="flex flex-1 items-center py-section">
       <Container width="narrow">
-        <Eyebrow>404</Eyebrow>
-        <Heading as="h1" size="h1" className="mt-5">
+        <Eyebrow>Error 404</Eyebrow>
+        <Heading as="h1" className="mt-stack-sm">
           This page doesn&rsquo;t exist.
         </Heading>
-        <p className="mt-6 text-lead text-slate">
+        <Text size="body-lg" className="mt-stack">
           The link may be out of date, or the page may have moved.
-        </p>
-        <Button href="/" size="lg" className="mt-10">
+        </Text>
+        <Button href="/" size="lg" className="mt-stack-lg">
           Back to home
         </Button>
       </Container>

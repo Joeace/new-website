@@ -1,22 +1,20 @@
-import { Geist, Instrument_Serif } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 
 /**
  * Fonts are downloaded at build time and served from our own domain,
  * so visitors never make a request to Google.
  *
- * Geist: primary sans for UI, body and headlines.
- * Instrument Serif: editorial accent for selected words and statements.
+ * Manrope: headings and display type (font-display).
+ * Inter: body copy and interface text (font-sans).
  */
-export const geist = Geist({
+export const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-geist",
+  variable: "--font-manrope",
   display: "swap",
 });
 
-export const instrumentSerif = Instrument_Serif({
+export const inter = Inter({
   subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-  variable: "--font-instrument-serif",
+  variable: "--font-inter",
   display: "swap",
 });

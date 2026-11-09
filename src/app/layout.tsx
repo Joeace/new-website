@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { geist, instrumentSerif } from "@/lib/fonts";
+import { MotionProvider } from "@/components/motion/MotionProvider";
+import { inter, manrope } from "@/lib/fonts";
 import { site } from "@/content/site";
 import "./globals.css";
 
@@ -26,8 +27,10 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en-GB" className={`${geist.variable} ${instrumentSerif.variable}`}>
-      <body className="flex min-h-dvh flex-col">{children}</body>
+    <html lang="en-GB" className={`${manrope.variable} ${inter.variable}`}>
+      <body className="flex min-h-dvh flex-col">
+        <MotionProvider>{children}</MotionProvider>
+      </body>
     </html>
   );
 }

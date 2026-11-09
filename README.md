@@ -11,7 +11,7 @@ Website for Mota Content Media, a creative technology and digital marketing agen
 | Framework | Next.js 16 (App Router), React 19, TypeScript |
 | Styling | Tailwind CSS v4, with design tokens in `src/app/globals.css` |
 | Motion | Motion for React (`motion/react`) |
-| Fonts | Geist and Instrument Serif, self-hosted at build time via `next/font` |
+| Fonts | Manrope (headings) and Inter (body), self-hosted at build time via `next/font` |
 | Hosting | Cloudflare, served as a static export from `out/` |
 
 Libraries are added only when a feature needs them. GSAP, Three.js / React Three Fiber and Lucide are planned but not yet installed.
@@ -50,34 +50,83 @@ Because the site is a static export, server-only Next.js features (Server Action
 
 ```
 src/
-  app/                  Routes, root layout, global styles and tokens
+  app/
+    globals.css         Design tokens and visual utilities (single source of truth)
+    layout.tsx          Fonts, metadata, MotionProvider
+    design-system/      page.dev.tsx: internal preview, `npm run dev` only
   components/
-    ui/                 Button, Container, Section, Heading (Accent, Eyebrow)
-    motion/             Reveal and future motion primitives
+    ui/                 Heading, Accent, Eyebrow, Text, Button, Card, Chip, Container,
+                        Section, SectionHeading, Grid, Divider, MediaFrame, IconFrame
+    cards/              Service, Feature, Portfolio, Testimonial, Industry, Article
+    motion/             MotionProvider, Reveal
   content/              Typed site content and brand facts
-  lib/                  Fonts and utilities
+  lib/                  Fonts, motion tokens for JS, utilities
 public/                 Static assets (brand files, optimised images)
 ```
 
+Run `npm run dev` and open `/design-system/` to see every token and component. Files ending in `.dev.tsx` are routes only in development and are never built into the live site.
+
 ## Design system
 
-Colours (Tailwind utilities such as `bg-deep`, `text-slate`):
+All tokens live in `src/app/globals.css` and become Tailwind utilities. Motion timings are mirrored in `src/lib/motion.ts` for Motion for React; change both together.
 
-| Token | Hex | Use |
+### Colour
+
+| Token | Hex | Use | Contrast on white |
+| --- | --- | --- | --- |
+| `white` | `#FFFFFF` | Dominant background | |
+| `ice` / `surface` | `#F4F7FB` | Alternate sections, card fills | |
+| `silver` / `line` | `#DCE2EA` | Borders, dividers (decorative) | 1.3 |
+| `mist` | `#EAF2FD` | Faint highlight fill | |
+| `electric` | `#2F80ED` | Accents, icons, focus ring, glows, large text | 3.9 |
+| `interactive` | `#1C6AD4` | Buttons and links | 5.2 |
+| `deep` | `#123B70` | Emphasis and highlighted headings | 11.1 |
+| `midnight` / `ink` | `#17243A` | Body text, rare dark bands | 15.6 |
+| `slate` | `#4A5872` | Secondary text | 7.2 |
+| `muted` | `#5F6C85` | Captions and meta | 5.3 |
+| `line-strong` | `#8592A8` | Form-field borders | 3.2 |
+
+**Accessibility rule:** brand electric blue is 3.9:1 on white, below the 4.5:1 needed for normal text, so white button labels and small links use `interactive` blue instead. Electric blue is for large text, icons, focus rings and glows.
+
+### Typography
+
+Headings use Manrope (`font-display`); everything else uses Inter (`font-sans`). Sizes are fluid between 360px and 1440px viewports.
+
+| Utility | Phone → desktop | Use |
 | --- | --- | --- |
-| `white` | `#FFFFFF` | Dominant background |
-| `ice` | `#F4F7FB` | Alternate sections, subtle surfaces |
-| `silver` | `#DCE2EA` | Dividers and depth, decorative only |
-| `electric` | `#2F80ED` | Accents, icons, focus rings, large text only |
-| `deep` | `#123B70` | Primary buttons, links, highlighted type |
-| `midnight` | `#17243A` | Body text, dark sections |
-| `slate` | `#4A5872` | Secondary text |
+| `text-display` | 44 → 88px, 800 | Hero statements |
+| `text-h1` | 36 → 64px, 800 | Page titles |
+| `text-h2` | 30 → 48px, 700 | Section titles |
+| `text-h3` | 22 → 28px, 700 | Sub-sections, large cards |
+| `text-h4` | 18 → 20px, 700 | Cards and lists |
+| `text-body-lg` | 18 → 21px | Introductions |
+| `text-body` | 16 → 17px | Body copy |
+| `text-body-sm` | 14px | Captions, meta, card text |
+| `text-label` | 12px, 600, uppercase | Eyebrows and labels |
+| `text-button` | 15px, 600 | Buttons |
+| `text-nav` | 15px, 500 | Navigation |
 
-**Accessibility rule:** electric blue on white is 3.9:1, below the WCAG AA minimum of 4.5:1 for normal text. Never use it for body copy, small links or button labels. Deep blue (11.1:1) and slate (7.2:1) are safe for any text.
+### Layout and spacing
 
-Type sizes `text-display`, `text-h1`, `text-h2`, `text-h3`, `text-lead` and `text-eyebrow` are fluid. Spacing tokens `px-gutter`, `py-section` and `py-section-sm` keep layout rhythm consistent.
+- **Breakpoints:** `sm` 640, `md` 768 (tablet), `lg` 1024 (desktop), `xl` 1280, `2xl` 1536.
+- **Containers:** `max-w-prose` 672, `max-w-narrow` 832, `max-w-content` 1280, `max-w-wide` 1440, all with the fluid `px-gutter` (20 → 48px).
+- **Section padding:** `py-section-sm`, `py-section`, `py-section-lg`.
+- **Grid gaps:** `gap-layout-sm`, `gap-layout`, `gap-layout-lg`. The `Grid` component provides 2, 3, 4 and 12-column presets.
+- **Card padding:** `p-card-sm`, `p-card`, `p-card-lg`.
+- **Text rhythm:** `gap-stack-xs`, `gap-stack-sm`, `gap-stack`, `gap-stack-lg`.
+- **Navigation:** `h-nav` (64 → 80px) and `gap-nav-gap`.
+- **Icons:** `size-icon-sm` 16, `size-icon` 20, `size-icon-lg` 24, `size-icon-xl` 32.
 
-All animation respects `prefers-reduced-motion`.
+### Components
+
+- **Buttons:** `primary`, `secondary` and `text` variants; `sm`, `md` and `lg` sizes; optional sliding arrow; hover, focus, active and disabled states.
+- **Cards:** a base `Card` with `raised`, `outline`, `ice`, `glass`, `inverse` and `plain` surfaces, plus the six card types. Linked cards use one stretched link, so the whole card is clickable and announced once.
+- **Section backgrounds:** `white`, `ice`, `fade`, `glow` (optional `grid` overlay) and `midnight`. White should carry most of the site.
+- **Media:** `MediaFrame` for consistent ratios, radius, cover cropping, hover zoom and text scrims.
+
+### Motion
+
+CSS transitions handle hover and focus: 150ms colour, 250ms buttons and links, 500ms cards and 800ms reveals, using `ease-standard` and `ease-out-expo`. `Reveal` handles entrance animation. `MotionProvider` and a global CSS rule both honour `prefers-reduced-motion`.
 
 ## Content rules
 
