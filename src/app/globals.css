@@ -185,6 +185,46 @@
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+
+  /* Keyframe animations. Pure CSS, so content appears without JavaScript. */
+  --animate-rise: rise var(--duration-slower) var(--ease-out-expo) both;
+  --animate-emerge: emerge 1.2s var(--ease-out-expo) both;
+  --animate-float: float var(--float-duration, 7s) ease-in-out infinite alternate;
+  --animate-orbit: orbit 140s linear infinite;
+  --animate-fade-in: fade-in 1.2s var(--ease-standard) both;
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+  }
+
+  /* Starts offset towards the centre of a composition (--from-x / --from-y). */
+  @keyframes emerge {
+    from {
+      opacity: 0;
+      transform: translate(var(--from-x, 0), var(--from-y, 0)) scale(0.9);
+    }
+  }
+
+  @keyframes float {
+    to {
+      transform: translateY(var(--float-distance, -10px));
+    }
+  }
+
+  @keyframes orbit {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+  }
 }
 
 /*
@@ -244,6 +284,7 @@
     *::before,
     *::after {
       animation-duration: 0.01ms !important;
+      animation-delay: 0s !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;

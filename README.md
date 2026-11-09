@@ -58,6 +58,7 @@ src/
     navigation/         Header, DesktopNavigation, ServicesMegaMenu, MobileNavigation,
                         NavigationLink, Logo
     sections/           PageIntro (shared inner-page opening)
+    home/               HomeHero, CreativeUniverse, universe/Illustrations
     ui/                 Heading, Accent, Eyebrow, Text, Button, Card, Chip, Container,
                         Section, SectionHeading, Grid, Divider, MediaFrame, IconFrame
     cards/              Service, Feature, Portfolio, Testimonial, Industry, Article
@@ -72,7 +73,7 @@ public/
 
 | Route | Status |
 | --- | --- |
-| `/` | Holding page (home page phase next) |
+| `/` | Homepage: "The Mota Creative Universe" hero (further sections to follow) |
 | `/services/` | Six service cards |
 | `/services/[slug]/` | One page per service, generated from `content/services.ts` |
 | `/contact/` | Email contact (address set in `src/content/site.ts`) |
