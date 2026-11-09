@@ -75,7 +75,8 @@ public/
 | `/` | Holding page (home page phase next) |
 | `/services/` | Six service cards |
 | `/services/[slug]/` | One page per service, generated from `content/services.ts` |
-| `/about/`, `/work/`, `/insights/`, `/contact/`, `/create-your-service/` | Planned pages showing an "in development" notice |
+| `/contact/` | Email contact (address set in `src/content/site.ts`) |
+| `/about/`, `/work/`, `/insights/`, `/create-your-service/` | Planned pages showing an "in development" notice |
 
 Navigation items and services are defined once in `src/content/` and shared by the header, mega menu, mobile menu and pages.
 
