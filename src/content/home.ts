@@ -26,3 +26,18 @@ export const about = {
   primaryCta: { label: "Discover More About Us", href: "/about/" },
   secondaryCta: { label: "Explore Our Services", href: "/services/" },
 } as const;
+
+/** "What we do" homepage section. Service details live in content/services.ts. */
+export const servicesSection = {
+  eyebrow: "What We Do",
+  heading: { lead: "Creative Expertise. Intelligent Solutions.", accent: "One Connected Agency." },
+  intro:
+    "From compelling content and powerful visuals to strategic marketing and intelligent digital solutions, we bring the expertise businesses need to build their presence, connect with audiences and grow.",
+  capabilitiesLabel: "Key capabilities",
+  cardCue: "Explore Service",
+  cta: {
+    heading: "Not Sure Which Service Is Right for You?",
+    body: "Every business is different. Tell us what you\u2019re trying to achieve and we\u2019ll help you build a solution around your goals.",
+    button: { label: "Create Your Service", href: "/create-your-service/" },
+  },
+} as const;

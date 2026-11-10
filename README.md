@@ -58,10 +58,10 @@ src/
     navigation/         Header, DesktopNavigation, ServicesMegaMenu, MobileNavigation,
                         NavigationLink, Logo
     sections/           PageIntro (shared inner-page opening)
-    home/               HomeHero, CreativeUniverse, universe/Illustrations, HomeAbout, AboutVisual
+    home/               HomeHero, CreativeUniverse, universe/Illustrations, HomeAbout, AboutVisual, HomeServices, services/ServiceMotif
     ui/                 Heading, Accent, Eyebrow, Text, Button, Card, Chip, Container,
                         Section, SectionHeading, Grid, Divider, MediaFrame, IconFrame
-    cards/              Service, Feature, Portfolio, Testimonial, Industry, Article
+    cards/              Service, ServicePillar, Feature, Portfolio, Testimonial, Industry, Article
     motion/             MotionProvider, Reveal
   content/              Typed site content: site.ts, navigation.ts, services.ts
   lib/                  Fonts, motion tokens for JS, utilities
@@ -73,9 +73,9 @@ public/
 
 | Route | Status |
 | --- | --- |
-| `/` | Homepage: "The Mota Creative Universe" hero and "Get to know Mota" (further sections to follow) |
+| `/` | Homepage: hero, "Get to know Mota" and "What we do" (further sections to follow) |
 | `/services/` | Six service cards |
-| `/services/[slug]/` | One page per service, generated from `content/services.ts` |
+| `/services/[slug]/` | One page per service, generated from `content/services.ts`: `content-writing`, `audio-production`, `video-production`, `graphic-design`, `social-media`, `digital-marketing` |
 | `/contact/` | Email contact (address set in `src/content/site.ts`) |
 | `/about/`, `/work/`, `/insights/`, `/create-your-service/` | Planned pages showing an "in development" notice |
 

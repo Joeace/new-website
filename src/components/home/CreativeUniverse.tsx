@@ -65,7 +65,7 @@ const satellites: SatelliteConfig[] = [
   {
     key: "search",
     label: "Search & AI visibility",
-    slug: "digital-marketing-growth",
+    slug: "digital-marketing",
     x: 52, y: 4,
     depth: 0.45, tier: "wide",
     float: { duration: 8.5, delay: -2, distance: -8 },
@@ -75,7 +75,7 @@ const satellites: SatelliteConfig[] = [
   {
     key: "video",
     label: "Video Production & Animation",
-    slug: "video-production-animation",
+    slug: "video-production",
     x: 14, y: 22, mx: 24, my: 13,
     depth: 1, tier: "all",
     float: { duration: 7, delay: -1, distance: -12 },
@@ -85,7 +85,7 @@ const satellites: SatelliteConfig[] = [
   {
     key: "design",
     label: "Graphic Design & Visual Strategy",
-    slug: "graphic-design-visual-strategy",
+    slug: "graphic-design",
     x: 84, y: 18, mx: 80, my: 16,
     depth: 0.75, tier: "md",
     float: { duration: 9, delay: -4, distance: -10 },
@@ -95,7 +95,7 @@ const satellites: SatelliteConfig[] = [
   {
     key: "social",
     label: "Social Media Management & Advertising",
-    slug: "social-media-management-advertising",
+    slug: "social-media",
     x: 89, y: 58, mx: 86, my: 52,
     depth: 0.95, tier: "all",
     float: { duration: 7.5, delay: -3, distance: -12 },
@@ -105,7 +105,7 @@ const satellites: SatelliteConfig[] = [
   {
     key: "analytics",
     label: "Digital Marketing & Growth",
-    slug: "digital-marketing-growth",
+    slug: "digital-marketing",
     x: 70, y: 90, mx: 70, my: 90,
     depth: 0.9, tier: "all",
     float: { duration: 8, delay: -5, distance: -10 },
@@ -115,7 +115,7 @@ const satellites: SatelliteConfig[] = [
   {
     key: "audio",
     label: "Audio Production & Sound Engineering",
-    slug: "audio-production-sound-engineering",
+    slug: "audio-production",
     x: 15, y: 71, mx: 18, my: 79,
     depth: 0.7, tier: "all",
     float: { duration: 9.5, delay: -2.5, distance: -9 },
@@ -125,7 +125,7 @@ const satellites: SatelliteConfig[] = [
   {
     key: "editorial",
     label: "Content Writing & Editorial Strategy",
-    slug: "content-writing-editorial-strategy",
+    slug: "content-writing",
     x: 30, y: 94,
     depth: 0.55, tier: "wide",
     float: { duration: 10, delay: -6, distance: -8 },
