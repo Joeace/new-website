@@ -5,7 +5,6 @@
  */
 export const site = {
   name: "Mota Content Media",
-  shortName: "Mota",
   tagline: "Ideas into influence. Content into growth.",
   positioning: "Creative Thinking. Intelligent Technology. Measurable Growth.",
   description:

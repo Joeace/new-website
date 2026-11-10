@@ -36,7 +36,7 @@ export function AboutVisual({ className }: { className?: string }) {
   return (
     <div
       role="img"
-      aria-label="Illustration of a creative workspace: a tablet showing a brand layout, the Mota colour palette and typefaces, and a four-step process from idea to growth."
+      aria-label="Illustration of a creative workspace: a tablet showing a brand layout, the Mota Content Media colour palette and typefaces, and a four-step process from idea to growth."
       className={cn("relative isolate aspect-[5/6] w-full", className)}
     >
       <div aria-hidden="true" className="absolute inset-0">

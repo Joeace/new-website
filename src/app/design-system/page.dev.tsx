@@ -106,7 +106,7 @@ export default function DesignSystemPage() {
             eyebrow="Internal reference"
             title={
               <>
-                Mota design <Accent>system</Accent>
+                Mota Content Media design <Accent>system</Accent>
               </>
             }
             description="Tokens and components for every page. All sample copy on this page is illustrative and only visible in local development."

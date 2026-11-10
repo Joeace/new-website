@@ -58,7 +58,7 @@ src/
     navigation/         Header, DesktopNavigation, ServicesMegaMenu, MobileNavigation,
                         NavigationLink, Logo
     sections/           PageIntro (shared inner-page opening)
-    home/               HomeHero, CreativeUniverse, universe/Illustrations, HomeAbout, AboutVisual, HomeServices, services/ServiceMotif
+    home/               HomeHero, CreativeUniverse, universe/Illustrations, HomeAbout, AboutVisual, HomeServices, services/ServiceMotif, HomeWhyChoose
     ui/                 Heading, Accent, Eyebrow, Text, Button, Card, Chip, Container,
                         Section, SectionHeading, Grid, Divider, MediaFrame, IconFrame
     cards/              Service, ServicePillar, Feature, Portfolio, Testimonial, Industry, Article
@@ -73,7 +73,7 @@ public/
 
 | Route | Status |
 | --- | --- |
-| `/` | Homepage: hero, "Get to know Mota" and "What we do" (further sections to follow) |
+| `/` | Homepage: hero, About, What We Do and Why Choose Mota Content Media (further sections to follow) |
 | `/services/` | Six service cards |
 | `/services/[slug]/` | One page per service, generated from `content/services.ts`: `content-writing`, `audio-production`, `video-production`, `graphic-design`, `social-media`, `digital-marketing` |
 | `/contact/` | Email contact (address set in `src/content/site.ts`) |
@@ -148,5 +148,7 @@ CSS transitions handle hover and focus: 150ms colour, 250ms buttons and links, 5
 Scroll-linked effects that need no JavaScript use the `scroll-reveal`, `scroll-drift` and `scroll-grow-x` utilities (CSS scroll-driven animations). Browsers without support, and visitors who prefer reduced motion, see the content in its final position.
 
 ## Content rules
+
+Always use the full brand name, Mota Content Media; never shorten it to "Mota".
 
 Never add invented testimonials, statistics, clients, awards or credentials, and never ship UI that looks functional but does nothing.

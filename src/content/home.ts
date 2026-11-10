@@ -41,3 +41,67 @@ export const servicesSection = {
     button: { label: "Create Your Service", href: "/create-your-service/" },
   },
 } as const;
+
+/** "Why choose Mota Content Media?" homepage section. */
+export const whyChoose = {
+  eyebrow: "The Mota Content Media Difference",
+  heading: "Why Choose Mota Content Media?",
+  statement: {
+    lead: "More Than Creative. More Than Marketing.",
+    accent: "A Smarter Way to Move Your Business Forward.",
+  },
+  intro: [
+    "The right creative partner does more than deliver individual services. It understands your objectives, connects the dots and brings the right expertise together to move your business forward.",
+    "At Mota Content Media, we combine creative excellence, intelligent technology and strategic execution to develop tailored solutions that help businesses communicate, compete and grow in an increasingly digital world.",
+  ],
+  /* The three disciplines the introduction brings together. */
+  pillars: ["Creative excellence", "Intelligent technology", "Strategic execution"],
+  advantages: [
+    {
+      title: "Intelligent Innovation",
+      description:
+        "We embrace emerging technologies and AI-assisted tools to expand creative possibilities, streamline processes and develop smarter solutions. Technology supports our creativity; it does not replace thoughtful human direction.",
+    },
+    {
+      title: "Bespoke Strategies",
+      description:
+        "No two businesses are identical. We take the time to understand your goals, audience and challenges before developing creative and marketing solutions tailored to your needs.",
+    },
+    {
+      title: "Results-Driven Thinking",
+      description:
+        "Every creative and marketing decision should have a purpose. We focus on aligning content, campaigns and digital experiences with meaningful business objectives.",
+    },
+    {
+      title: "Customer-Centric Delivery",
+      description:
+        "Your goals shape our approach. We value clear communication, collaboration and solutions that reflect your priorities, expectations and business ambitions.",
+    },
+    {
+      title: "Integrated Expertise",
+      description:
+        "Content, design, audio, video and marketing work better when they work together. Our connected service capabilities help create a consistent and cohesive brand experience across digital channels.",
+    },
+    {
+      title: "Efficient Execution",
+      description:
+        "We use organised workflows, modern tools and intelligent processes to support efficient project delivery while maintaining attention to quality, creativity and detail.",
+    },
+    {
+      title: "Collaborative Partnership",
+      description:
+        "We believe the best work comes from productive collaboration. We work alongside our clients to understand their vision, exchange ideas and develop solutions together.",
+    },
+    {
+      title: "Long-Term Growth",
+      description:
+        "We look beyond individual deliverables. Our aim is to help businesses build stronger digital foundations, develop lasting relationships with their audiences and create opportunities for continued growth.",
+    },
+  ],
+  closing: {
+    statement: "Your ambitions deserve more than ordinary solutions. Let\u2019s create something meaningful together.",
+    body: "Whether you need creative content, a stronger digital presence or an integrated marketing strategy, Mota Content Media is ready to help you take the next step.",
+    primaryCta: { label: "Let\u2019s Work Together", href: "/contact/" },
+    secondaryCta: { label: "Create Your Service", href: "/create-your-service/" },
+  },
+} as const;
