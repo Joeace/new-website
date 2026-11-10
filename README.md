@@ -58,7 +58,7 @@ src/
     navigation/         Header, DesktopNavigation, ServicesMegaMenu, MobileNavigation,
                         NavigationLink, Logo
     sections/           PageIntro (shared inner-page opening)
-    home/               HomeHero, CreativeUniverse, universe/Illustrations
+    home/               HomeHero, CreativeUniverse, universe/Illustrations, HomeAbout, AboutVisual
     ui/                 Heading, Accent, Eyebrow, Text, Button, Card, Chip, Container,
                         Section, SectionHeading, Grid, Divider, MediaFrame, IconFrame
     cards/              Service, Feature, Portfolio, Testimonial, Industry, Article
@@ -73,7 +73,7 @@ public/
 
 | Route | Status |
 | --- | --- |
-| `/` | Homepage: "The Mota Creative Universe" hero (further sections to follow) |
+| `/` | Homepage: "The Mota Creative Universe" hero and "Get to know Mota" (further sections to follow) |
 | `/services/` | Six service cards |
 | `/services/[slug]/` | One page per service, generated from `content/services.ts` |
 | `/contact/` | Email contact (address set in `src/content/site.ts`) |
@@ -144,6 +144,8 @@ Headings use Manrope (`font-display`); everything else uses Inter (`font-sans`).
 ### Motion
 
 CSS transitions handle hover and focus: 150ms colour, 250ms buttons and links, 500ms cards and 800ms reveals, using `ease-standard` and `ease-out-expo`. `Reveal` handles entrance animation. `MotionProvider` and a global CSS rule both honour `prefers-reduced-motion`.
+
+Scroll-linked effects that need no JavaScript use the `scroll-reveal`, `scroll-drift` and `scroll-grow-x` utilities (CSS scroll-driven animations). Browsers without support, and visitors who prefer reduced motion, see the content in its final position.
 
 ## Content rules
 

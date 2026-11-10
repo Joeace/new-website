@@ -225,6 +225,21 @@
       opacity: 0;
     }
   }
+
+  @keyframes drift {
+    from {
+      transform: translateY(var(--drift, 24px));
+    }
+    to {
+      transform: translateY(calc(var(--drift, 24px) * -1));
+    }
+  }
+
+  @keyframes grow-x {
+    from {
+      transform: scaleX(0);
+    }
+  }
 }
 
 /*
@@ -334,6 +349,47 @@
   @supports (backdrop-filter: blur(1px)) {
     background-color: rgb(255 255 255 / 0.68);
     backdrop-filter: blur(16px) saturate(1.5);
+  }
+}
+
+/*
+ * Scroll-driven motion (no JavaScript). Applied only where the browser
+ * supports view timelines and the visitor has not asked for reduced motion;
+ * everywhere else the content is simply shown in place.
+ */
+
+/* Rises into view as the element enters the viewport.
+   Stagger with --reveal-from / --reveal-to (e.g. 10% / 34%). */
+@utility scroll-reveal {
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry var(--reveal-from, 0%) cover var(--reveal-to, 28%);
+    }
+  }
+}
+
+/* Drifts vertically while in view, for layered depth. Set --drift per layer. */
+@utility scroll-drift {
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation: drift linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+  }
+}
+
+/* Grows from the left as it scrolls into view (progress accents). */
+@utility scroll-grow-x {
+  transform-origin: left;
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation: grow-x linear both;
+      animation-timeline: view();
+      animation-range: entry 20% cover 45%;
+    }
   }
 }
 
