@@ -166,3 +166,66 @@ export const approach = {
     secondaryCta: { label: "Create Your Service", href: "/create-your-service/" },
   },
 } as const;
+
+/**
+ * "Selected creative work". These are self-initiated concept projects that
+ * illustrate capabilities, not client commissions: no client names, results
+ * or testimonials. Replace with genuine portfolio work when available.
+ */
+export const featuredWork = {
+  eyebrow: "Selected Creative Work",
+  heading: { lead: "Ideas Brought to Life.", accent: "Creativity Put into Action." },
+  intro: [
+    "Explore a selection of creative concepts and digital experiences that demonstrate what is possible when creative thinking, intelligent technology and strategic execution come together.",
+    "From compelling visual identities to engaging multimedia content and digital campaigns, every project represents an opportunity to turn an idea into something meaningful.",
+  ],
+  conceptLabel: "Concept Project",
+  conceptNote:
+    "The projects shown are self-initiated creative concepts by Mota Content Media. They illustrate our capabilities and are not client commissions.",
+  cue: "Explore Project",
+  projects: [
+    {
+      slug: "brand-identity",
+      category: "Graphic Design & Branding",
+      title: "Building a Distinctive Brand Identity",
+      description:
+        "A conceptual branding project exploring visual identity, colour systems, typography and brand applications for a modern business.",
+    },
+    {
+      slug: "video-campaign",
+      category: "Video Production",
+      title: "A Story Worth Watching",
+      description:
+        "A conceptual promotional video campaign demonstrating visual storytelling, motion graphics and engaging digital video content.",
+    },
+    {
+      slug: "editorial-content",
+      category: "Content Writing",
+      title: "Ideas That Inform and Inspire",
+      description:
+        "A conceptual editorial project showcasing professional writing, content structure, visual presentation and audience-focused storytelling.",
+    },
+    {
+      slug: "social-media-campaign",
+      category: "Social Media Marketing",
+      title: "Creating a Stronger Social Presence",
+      description:
+        "A conceptual social media campaign demonstrating creative direction, content planning, visual consistency and platform-specific content.",
+    },
+    {
+      slug: "audio-production",
+      category: "Audio Production",
+      title: "Sound That Makes an Impression",
+      description:
+        "A conceptual audio production project demonstrating voice recording, sound design, audio editing and professional presentation.",
+    },
+    {
+      slug: "digital-marketing",
+      category: "Digital Marketing",
+      title: "A Connected Digital Growth Strategy",
+      description:
+        "A conceptual digital marketing project demonstrating how search visibility, content, paid media and conversion-focused experiences can work together.",
+    },
+  ],
+  cta: { label: "Explore Our Portfolio", href: "/work/" },
+} as const;

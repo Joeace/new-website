@@ -59,10 +59,10 @@ src/
     navigation/         Header, DesktopNavigation, ServicesMegaMenu, MobileNavigation,
                         NavigationLink, Logo
     sections/           PageIntro (shared inner-page opening)
-    home/               HomeHero, CreativeUniverse, universe/Illustrations, HomeAbout, AboutVisual, HomeServices, services/ServiceMotif, HomeWhyChoose, HomeApproach
+    home/               HomeHero, CreativeUniverse, universe/Illustrations, HomeAbout, AboutVisual, HomeServices, services/ServiceMotif, HomeWhyChoose, HomeApproach, HomeFeaturedWork, projects/ProjectArtwork
     ui/                 Heading, Accent, Eyebrow, Text, Button, Card, Chip, Container,
                         Section, SectionHeading, Grid, Divider, MediaFrame, IconFrame
-    cards/              Service, ServicePillar, Feature, Portfolio, Testimonial, Industry, Article
+    cards/              Service, ServicePillar, Project, Feature, Portfolio, Testimonial, Industry, Article
     motion/             MotionProvider, Reveal
   content/              Typed site content: site.ts, navigation.ts, services.ts
   lib/                  Fonts, motion tokens for JS, utilities
@@ -74,7 +74,7 @@ public/
 
 | Route | Status |
 | --- | --- |
-| `/` | Homepage: hero, About, What We Do, Why Choose Mota Content Media and How We Work (further sections to follow) |
+| `/` | Homepage: hero, About, What We Do, Why Choose Mota Content Media, How We Work and Selected Creative Work (further sections to follow) |
 | `/services/` | Six service cards |
 | `/services/[slug]/` | One page per service, generated from `content/services.ts`: `content-writing`, `audio-production`, `video-production`, `graphic-design`, `social-media`, `digital-marketing` |
 | `/contact/` | Email contact (address set in `src/content/site.ts`) |
@@ -151,5 +151,7 @@ Scroll-linked effects that need no JavaScript use the `scroll-reveal`, `scroll-d
 ## Content rules
 
 Always use the full brand name, Mota Content Media; never shorten it to "Mota".
+
+The six homepage projects are self-initiated concepts, labelled "Concept Project" with a visible disclosure. Replace them with genuine, approved client work when available; never add client names, results or feedback to concept entries.
 
 Never add invented testimonials, statistics, clients, awards or credentials, and never ship UI that looks functional but does nothing.
