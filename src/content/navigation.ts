@@ -38,3 +38,16 @@ export function isActivePath(pathname: string, href: string) {
   const target = normalise(href);
   return target === "/" ? current === "/" : current.startsWith(target);
 }
+
+/** Footer link groups. Services are listed from content/services.ts. */
+export const footerNav = {
+  company: {
+    title: "Company",
+    links: primaryNav.filter((item) => !item.hasServicesMenu),
+  },
+  services: { title: "Services", allLabel: "All services", allHref: "/services/" },
+  start: {
+    title: "Get started",
+    links: [navActions.createService, navActions.talk],
+  },
+} as const;

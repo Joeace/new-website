@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { MotionProvider } from "@/components/motion/MotionProvider";
+import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/navigation/Header";
 import { inter, manrope } from "@/lib/fonts";
 import { site } from "@/content/site";
@@ -35,6 +36,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <main id="main-content" tabIndex={-1} className="flex flex-1 flex-col outline-none">
             {children}
           </main>
+          <Footer />
         </MotionProvider>
       </body>
     </html>

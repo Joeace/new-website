@@ -10,13 +10,15 @@ type LogoProps = {
   nameClassName?: string;
   className?: string;
   onClick?: () => void;
+  /** Preload the image (header only; it is above the fold on every page). */
+  preload?: boolean;
 };
 
 /**
  * The MCM monogram, used exactly as supplied (trimmed and resized only).
  * mix-blend-multiply lets its white background disappear on light surfaces.
  */
-export function Logo({ showName = true, nameClassName, className, onClick }: LogoProps) {
+export function Logo({ showName = true, nameClassName, className, onClick, preload = true }: LogoProps) {
   return (
     <Link
       href="/"
@@ -29,7 +31,7 @@ export function Logo({ showName = true, nameClassName, className, onClick }: Log
         alt=""
         width={315}
         height={132}
-        preload
+        preload={preload}
         className="h-9 w-auto mix-blend-multiply transition-[height] duration-(--duration-base) ease-standard group-data-[compact=true]/header:h-8"
       />
       {showName && (

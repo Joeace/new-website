@@ -55,6 +55,7 @@ src/
     layout.tsx          Fonts, metadata, MotionProvider
     design-system/      page.dev.tsx: internal preview, `npm run dev` only
   components/
+    layout/             Footer (site-wide, rendered in app/layout.tsx)
     navigation/         Header, DesktopNavigation, ServicesMegaMenu, MobileNavigation,
                         NavigationLink, Logo
     sections/           PageIntro (shared inner-page opening)
