@@ -58,7 +58,7 @@ src/
     navigation/         Header, DesktopNavigation, ServicesMegaMenu, MobileNavigation,
                         NavigationLink, Logo
     sections/           PageIntro (shared inner-page opening)
-    home/               HomeHero, CreativeUniverse, universe/Illustrations, HomeAbout, AboutVisual, HomeServices, services/ServiceMotif, HomeWhyChoose
+    home/               HomeHero, CreativeUniverse, universe/Illustrations, HomeAbout, AboutVisual, HomeServices, services/ServiceMotif, HomeWhyChoose, HomeApproach
     ui/                 Heading, Accent, Eyebrow, Text, Button, Card, Chip, Container,
                         Section, SectionHeading, Grid, Divider, MediaFrame, IconFrame
     cards/              Service, ServicePillar, Feature, Portfolio, Testimonial, Industry, Article
@@ -73,7 +73,7 @@ public/
 
 | Route | Status |
 | --- | --- |
-| `/` | Homepage: hero, About, What We Do and Why Choose Mota Content Media (further sections to follow) |
+| `/` | Homepage: hero, About, What We Do, Why Choose Mota Content Media and How We Work (further sections to follow) |
 | `/services/` | Six service cards |
 | `/services/[slug]/` | One page per service, generated from `content/services.ts`: `content-writing`, `audio-production`, `video-production`, `graphic-design`, `social-media`, `digital-marketing` |
 | `/contact/` | Email contact (address set in `src/content/site.ts`) |
@@ -145,7 +145,7 @@ Headings use Manrope (`font-display`); everything else uses Inter (`font-sans`).
 
 CSS transitions handle hover and focus: 150ms colour, 250ms buttons and links, 500ms cards and 800ms reveals, using `ease-standard` and `ease-out-expo`. `Reveal` handles entrance animation. `MotionProvider` and a global CSS rule both honour `prefers-reduced-motion`.
 
-Scroll-linked effects that need no JavaScript use the `scroll-reveal`, `scroll-drift` and `scroll-grow-x` utilities (CSS scroll-driven animations). Browsers without support, and visitors who prefer reduced motion, see the content in its final position.
+Scroll-linked effects that need no JavaScript use the `scroll-reveal`, `scroll-drift`, `scroll-grow-x`, `scroll-grow-y` and `scroll-spotlight` utilities (CSS scroll-driven animations). Browsers without support, and visitors who prefer reduced motion, see the content in its final position.
 
 ## Content rules
 

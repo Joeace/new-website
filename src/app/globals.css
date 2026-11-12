@@ -240,6 +240,26 @@
       transform: scaleX(0);
     }
   }
+
+  @keyframes grow-y {
+    from {
+      transform: scaleY(0);
+    }
+  }
+
+  /* Off, then on while centred in the viewport, then off again. */
+  @keyframes spotlight {
+    0%,
+    100% {
+      background-color: var(--spotlight-off-bg, var(--color-white));
+      color: var(--spotlight-off-fg, var(--color-interactive));
+    }
+    38%,
+    62% {
+      background-color: var(--spotlight-on-bg, var(--color-interactive));
+      color: var(--spotlight-on-fg, var(--color-white));
+    }
+  }
 }
 
 /*
@@ -389,6 +409,31 @@
       animation: grow-x linear both;
       animation-timeline: view();
       animation-range: entry 20% cover 45%;
+    }
+  }
+}
+
+/* Grows downwards so its leading edge tracks the middle of the viewport:
+   empty when its top reaches mid-screen, full when its bottom does (timelines). */
+@utility scroll-grow-y {
+  transform-origin: top;
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation: grow-y linear both;
+      animation-timeline: view();
+      animation-range: cover 50vh cover calc(100% - 50vh);
+    }
+  }
+}
+
+/* Highlights an element while it passes through the middle of the viewport
+   (active timeline step). Without support it keeps its own resting colours. */
+@utility scroll-spotlight {
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation: spotlight linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
     }
   }
 }

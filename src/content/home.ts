@@ -105,3 +105,64 @@ export const whyChoose = {
     secondaryCta: { label: "Create Your Service", href: "/create-your-service/" },
   },
 } as const;
+
+/** "How we work": the five-stage process. */
+export const approach = {
+  eyebrow: "How We Work",
+  heading: { lead: "Great Work Doesn\u2019t Happen by Accident.", accent: "It Happens by Design." },
+  intro: [
+    "Every successful project begins with understanding. At Mota Content Media, we follow a thoughtful, collaborative process that connects your business objectives with the right creative ideas, technology and marketing solutions.",
+    "From the first conversation to final delivery, every stage has a purpose: creating work that makes sense for your business and moves you closer to your goals.",
+  ],
+  activitiesLabel: "Key activities",
+  stages: [
+    {
+      id: "discover",
+      name: "Discover",
+      tagline: "Understand Before We Create.",
+      description:
+        "We begin by learning about your business, your audience, your challenges and what you want to achieve. This discovery stage gives us the insight needed to develop a solution that makes sense for your specific situation.",
+      activities: ["Initial consultation", "Business and audience understanding", "Project requirements", "Goals and objectives", "Scope definition"],
+    },
+    {
+      id: "strategise",
+      name: "Strategise",
+      tagline: "Give Every Idea a Direction.",
+      description:
+        "With a clear understanding of your needs, we develop a tailored strategy that defines the creative direction, recommended services, priorities, deliverables and execution plan.",
+      activities: ["Strategic planning", "Creative direction", "Service recommendations", "Channel and platform selection", "Project roadmap"],
+    },
+    {
+      id: "create",
+      name: "Create",
+      tagline: "Turn Ideas into Something Tangible.",
+      description:
+        "This is where strategy becomes creative work. Our team brings together content, design, audio, video and digital expertise to develop solutions that communicate your message and reflect your brand.",
+      activities: ["Content development", "Graphic and visual design", "Audio and video production", "Digital asset creation", "Review and refinement"],
+    },
+    {
+      id: "execute",
+      name: "Execute",
+      tagline: "Bring the Strategy to Life.",
+      description:
+        "We put the plan into action, coordinating the agreed deliverables and implementing the relevant creative and marketing activities across the selected platforms and channels.",
+      activities: ["Project implementation", "Content delivery and publishing", "Campaign execution", "Digital deployment", "Quality assurance"],
+    },
+    {
+      id: "measure-optimise",
+      name: "Measure & Optimise",
+      tagline: "Learn, Improve and Keep Moving Forward.",
+      description:
+        "Where performance measurement is relevant to the project, we evaluate results against agreed objectives, identify opportunities for improvement and recommend appropriate next steps.",
+      activities: ["Performance evaluation", "Reporting and insights", "Audience and engagement analysis", "Optimisation recommendations", "Future planning"],
+      /* Signals that this stage depends on the agreed scope. */
+      scopeNote: "Depends on project scope",
+    },
+  ],
+  closing: {
+    statement: "Every great project starts with a conversation.",
+    body: "Tell us what you want to achieve. We\u2019ll help you identify the right creative and digital solutions to get started.",
+    primaryCta: { label: "Start a Conversation", href: "/contact/" },
+    secondaryCta: { label: "Create Your Service", href: "/create-your-service/" },
+  },
+} as const;
