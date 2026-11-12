@@ -229,3 +229,21 @@ export const featuredWork = {
   ],
   cta: { label: "Explore Our Portfolio", href: "/work/" },
 } as const;
+
+/** "Who we work with": audience types served, not named clients. */
+export const audiences = {
+  eyebrow: "Who We Work With",
+  heading: { lead: "Different Ambitions.", accent: "One Creative Partner." },
+  body: "From emerging startups to established organisations and independent creators, Mota Content Media develops tailored creative and digital solutions for businesses and individuals across industries.",
+  labels: [
+    "Startups & Entrepreneurs",
+    "Small & Medium Businesses",
+    "E-commerce & Retail",
+    "Professional Services",
+    "Education & Publishing",
+    "Media & Entertainment",
+    "Corporate Organisations",
+    "Individuals & Personal Brands",
+  ],
+  link: { label: "Explore Our Services", href: "/services/" },
+} as const;
