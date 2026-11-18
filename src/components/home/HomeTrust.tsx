@@ -1,7 +1,8 @@
 import { Ear, Target, Users, type LucideIcon } from "lucide-react";
+import type { CSSProperties } from "react";
+import { TestimonialCard } from "@/components/cards/TestimonialCard";
 import { Container } from "@/components/ui/Container";
 import { Accent, Eyebrow, Heading } from "@/components/ui/Heading";
-import { IconFrame } from "@/components/ui/Icon";
 import { Section } from "@/components/ui/Section";
 import { Text } from "@/components/ui/Text";
 import { trust } from "@/content/home";
@@ -10,11 +11,9 @@ const icons: LucideIcon[] = [Ear, Users, Target];
 
 /**
  * "Trust & partnership": a compact, light band.
- * There are no verified client logos or testimonials yet, so this section
- * deliberately shows neither (no placeholders): only the approved copy, three
- * principles drawn from it, and a statement of who Mota Content Media aims
- * to serve. Add genuine, authorised logos or up to two testimonials here
- * when they exist.
+ * Left: approved copy and three principles drawn from it.
+ * Right: up to two genuine, approved client testimonials (organisation and
+ * engagement only; no invented people, roles, photos or logos).
  */
 export function HomeTrust() {
   return (
@@ -27,23 +26,39 @@ export function HomeTrust() {
             <Accent>{trust.heading.accent}</Accent>
           </Heading>
           <Text className="mt-stack-sm max-w-xl">{trust.body}</Text>
-        </div>
-
-        <div className="scroll-reveal [--reveal-from:6%] [--reveal-to:30%] lg:col-span-7">
-          <ul className="grid gap-px overflow-hidden rounded-lg bg-line ring-1 ring-line sm:grid-cols-3">
+          <ul className="mt-stack flex flex-col gap-2.5">
             {trust.principles.map((principle, index) => {
               const Icon = icons[index];
               return (
-                <li key={principle} className="flex items-center gap-3 bg-white px-4 py-3.5 sm:flex-col sm:items-start sm:gap-3 sm:py-5">
-                  <IconFrame tone="mist">
-                    <Icon strokeWidth={1.75} />
-                  </IconFrame>
-                  <span className="font-display text-body-sm leading-snug font-bold text-deep">{principle}</span>
+                <li key={principle} className="flex items-center gap-3 text-body-sm font-semibold text-deep">
+                  <span aria-hidden="true" className="grid size-8 shrink-0 place-items-center rounded-pill bg-mist text-interactive">
+                    <Icon className="size-4" strokeWidth={2} />
+                  </span>
+                  {principle}
                 </li>
               );
             })}
           </ul>
-          <p className="mt-stack max-w-[38rem] border-l-[3px] border-electric pl-4 text-body-sm text-slate sm:pl-5">{trust.statement}</p>
+        </div>
+
+        <div className="lg:col-span-7">
+          <h3 className="sr-only">{trust.testimonialsLabel}</h3>
+          <ul className="grid gap-layout md:grid-cols-2">
+            {trust.testimonials.map((testimonial, index) => (
+              <li
+                key={testimonial.organisation}
+                className="scroll-reveal"
+                style={{ "--reveal-from": `${4 + index * 5}%`, "--reveal-to": `${28 + index * 6}%` } as CSSProperties}
+              >
+                <TestimonialCard
+                  size="compact"
+                  quote={testimonial.quote}
+                  name={testimonial.organisation}
+                  role={testimonial.context}
+                />
+              </li>
+            ))}
+          </ul>
         </div>
       </Container>
     </Section>

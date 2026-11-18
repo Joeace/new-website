@@ -9,21 +9,24 @@ type TestimonialCardProps = {
   organisation?: string;
   /** Optional portrait, usually next/image at 48x48. */
   avatar?: ReactNode;
+  /** "compact" for short bands: less padding, body-size quote. */
+  size?: "default" | "compact";
 };
 
 /** A client quote with attribution. Only ever use genuine, approved testimonials. */
-export function TestimonialCard({ quote, name, role, organisation, avatar }: TestimonialCardProps) {
+export function TestimonialCard({ quote, name, role, organisation, avatar, size = "default" }: TestimonialCardProps) {
   const attribution = [role, organisation].filter(Boolean).join(", ");
+  const compact = size === "compact";
 
   return (
-    <Card as="figure" surface="raised" padding="lg" className="h-full gap-stack">
-      <svg aria-hidden="true" viewBox="0 0 32 24" className="h-6 w-8 fill-electric/80">
+    <Card as="figure" surface="raised" padding={compact ? "md" : "lg"} className={compact ? "h-full gap-stack-sm" : "h-full gap-stack"}>
+      <svg aria-hidden="true" viewBox="0 0 32 24" className={compact ? "h-4 w-5 fill-electric/80" : "h-6 w-8 fill-electric/80"}>
         <path d="M0 24V14.4C0 6.4 4.3 1.6 12 0l1.6 3.2C9.2 4.5 7 7.3 6.8 11.2H12V24H0Zm19.2 0V14.4c0-8 4.3-12.8 12-14.4l1.6 3.2c-4.4 1.3-6.6 4.1-6.8 8H31.2V24h-12Z" />
       </svg>
-      <blockquote className="font-display text-h4 font-semibold text-ink">
+      <blockquote className={compact ? "text-body leading-relaxed text-ink" : "font-display text-h4 font-semibold text-ink"}>
         <p>{quote}</p>
       </blockquote>
-      <figcaption className="mt-auto flex items-center gap-3 border-t border-line pt-stack">
+      <figcaption className={`mt-auto flex items-center gap-3 border-t border-line ${compact ? "pt-stack-sm" : "pt-stack"}`}>
         {avatar && <span className="size-12 shrink-0 overflow-hidden rounded-pill bg-ice [&_img]:size-full [&_img]:object-cover">{avatar}</span>}
         <span className="flex flex-col">
           <span className="text-body-sm font-semibold text-ink">{name}</span>

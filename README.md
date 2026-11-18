@@ -152,6 +152,8 @@ Scroll-linked effects that need no JavaScript use the `scroll-reveal`, `scroll-d
 
 Always use the full brand name, Mota Content Media; never shorten it to "Mota".
 
+Testimonials (Trust & Partnership section) are supplied and approved by Mota Content Media: keep the clients' wording, attribute by organisation only unless a named person has agreed, and show no more than two on the homepage.
+
 The six homepage projects are self-initiated concepts, labelled "Concept Project" with a visible disclosure. Replace them with genuine, approved client work when available; never add client names, results or feedback to concept entries.
 
 Never add invented testimonials, statistics, clients, awards or credentials, and never ship UI that looks functional but does nothing.
