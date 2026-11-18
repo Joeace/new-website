@@ -55,7 +55,7 @@ src/
     layout.tsx          Fonts, metadata, MotionProvider
     design-system/      page.dev.tsx: internal preview, `npm run dev` only
   components/
-    layout/             Footer (site-wide, rendered in app/layout.tsx)
+    layout/             Footer and CopyrightYear (site-wide, rendered once in app/layout.tsx)
     navigation/         Header, DesktopNavigation, ServicesMegaMenu, MobileNavigation,
                         NavigationLink, Logo
     sections/           PageIntro (shared inner-page opening)
@@ -80,7 +80,7 @@ public/
 | `/contact/` | Email contact (address set in `src/content/site.ts`) |
 | `/about/`, `/work/`, `/insights/`, `/create-your-service/` | Planned pages showing an "in development" notice |
 
-Navigation items and services are defined once in `src/content/` and shared by the header, mega menu, mobile menu and pages.
+Navigation items and services are defined once in `src/content/` and shared by the header, mega menu, mobile menu and pages. Footer content (links, legal routes and social profiles) lives in `footer` in `src/content/navigation.ts`; add verified social profile URLs there to show the Follow Us group. Legal routes `/privacy-policy/`, `/terms-and-conditions/` and `/cookie-policy/` are planned and not yet built.
 
 Run `npm run dev` and open `/design-system/` to see every token and component. Files ending in `.dev.tsx` are routes only in development and are never built into the live site.
 

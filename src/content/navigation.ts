@@ -39,15 +39,38 @@ export function isActivePath(pathname: string, href: string) {
   return target === "/" ? current === "/" : current.startsWith(target);
 }
 
-/** Footer link groups. Services are listed from content/services.ts. */
-export const footerNav = {
-  company: {
-    title: "Company",
-    links: primaryNav.filter((item) => !item.hasServicesMenu),
+/**
+ * Global footer content. Services are listed from content/services.ts and
+ * contact details from content/site.ts.
+ * No social profiles have been supplied, so no social links are shown;
+ * add verified profile URLs to `social` to display the Follow Us group.
+ * Legal routes are planned; the pages are built in a later phase.
+ */
+export const footer = {
+  description:
+    "Mota Content Media is a creative technology and digital marketing agency helping businesses and individuals transform ideas into compelling digital experiences through content, design, multimedia production and strategic marketing.",
+  cta: navActions.talk,
+  explore: {
+    title: "Explore",
+    links: [
+      { label: "Home", href: "/" },
+      { label: "About Us", href: "/about/" },
+      { label: "Our Services", href: "/services/" },
+      { label: "Our Work", href: "/work/" },
+      { label: "Insights", href: "/insights/" },
+      { label: "Contact", href: "/contact/" },
+    ],
   },
-  services: { title: "Services", allLabel: "All services", allHref: "/services/" },
-  start: {
-    title: "Get started",
-    links: [navActions.createService, navActions.talk],
+  services: { title: "Our Services" },
+  contact: { title: "Get in Touch", emailLabel: "Email", contactLink: { label: "Contact Us", href: "/contact/" } },
+  social: {
+    title: "Follow Us",
+    /* e.g. { platform: "LinkedIn", href: "https://www.linkedin.com/company/..." } */
+    profiles: [] as { platform: string; href: string }[],
   },
+  legal: [
+    { label: "Privacy Policy", href: "/privacy-policy/" },
+    { label: "Terms & Conditions", href: "/terms-and-conditions/" },
+    { label: "Cookie Policy", href: "/cookie-policy/" },
+  ],
 } as const;

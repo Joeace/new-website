@@ -1,70 +1,64 @@
-import { ArrowUp, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import Link from "next/link";
 import { Logo } from "@/components/navigation/Logo";
+import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { Accent } from "@/components/ui/Heading";
-import { footerNav } from "@/content/navigation";
+import { footer } from "@/content/navigation";
 import { serviceHref, services } from "@/content/services";
 import { site } from "@/content/site";
+import { CopyrightYear } from "./CopyrightYear";
 
-/* Shared link treatment: an underline drawn on hover, in the link's colour. */
-const linkBase =
-  "relative inline-flex rounded-xs py-1 text-body-sm transition-colors duration-(--duration-fast) hover:text-interactive " +
-  "after:absolute after:inset-x-0 after:bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-(--duration-base) after:ease-out-expo hover:after:scale-x-100";
-const linkClass = `${linkBase} text-slate`;
+/* Links: silver at rest, white on hover with a short electric underline. */
+const linkClass =
+  "relative inline-flex rounded-xs py-1 text-body-sm text-silver transition-colors duration-(--duration-fast) hover:text-white " +
+  "after:absolute after:bottom-0.5 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-electric after:transition-transform after:duration-(--duration-base) after:ease-out-expo hover:after:scale-x-100";
 
-const headingClass = "text-label text-deep uppercase";
+const headingClass = "text-label text-white uppercase";
 
 /**
- * Site-wide footer. Light, so the supplied logo sits on white exactly as
- * provided. Only links to pages that exist; no social or legal links until
- * those accounts and pages are confirmed.
- * The year is set at build time (static export), so it updates on each deploy.
+ * Global footer, rendered once in the root layout.
+ * Midnight background, white headings, silver secondary text, electric accents.
+ * The supplied logo sits on a white nameplate so it appears exactly as
+ * provided. Only verified contact details are shown; social links appear only
+ * when profile URLs are added in content/navigation.ts.
  */
 export function Footer() {
-  const year = new Date().getFullYear();
-  // "Ideas into influence." / "Content into growth."
-  const [taglineLead, taglineAccent] = site.tagline.split(/(?<=\.)\s/);
+  const { social } = footer;
+  const buildYear = new Date().getFullYear();
 
   return (
-    <footer aria-labelledby="footer-heading" className="relative border-t border-line bg-white">
+    <footer aria-labelledby="footer-heading" className="relative isolate overflow-hidden bg-midnight text-white">
       <h2 id="footer-heading" className="sr-only">
         {site.name}: site information
       </h2>
+      {/* Restrained atmosphere: a faint electric glow in one corner */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(36rem_22rem_at_100%_0%,rgb(47_128_237/0.18),transparent_70%)]"
+      />
 
-      <Container className="py-section-sm">
-        {/* Brand statement */}
-        <div className="flex flex-col gap-stack border-b border-line pb-stack-lg lg:flex-row lg:items-end lg:justify-between">
-          <div>
-            <Logo preload={false} />
-            <p className="mt-stack max-w-2xl font-display text-h3 text-ink">
-              {taglineLead} <Accent>{taglineAccent}</Accent>
-            </p>
-          </div>
-          <a
-            href={`mailto:${site.contact.email}`}
-            className="group/mail inline-flex items-center gap-3 self-start rounded-pill bg-ice py-2 pr-5 pl-2 text-body-sm font-medium text-deep ring-1 ring-line transition-colors duration-(--duration-base) hover:bg-mist hover:text-interactive lg:self-auto"
-          >
-            <span className="grid size-9 place-items-center rounded-pill bg-white text-interactive shadow-soft transition-colors duration-(--duration-base) group-hover/mail:bg-interactive group-hover/mail:text-white">
-              <Mail aria-hidden="true" className="size-4" strokeWidth={2} />
-            </span>
-            {site.contact.email}
-          </a>
-        </div>
-
-        {/* Link groups */}
-        <div className="grid grid-cols-2 gap-x-8 gap-y-stack-lg pt-stack-lg md:grid-cols-3 lg:grid-cols-12">
-          <div className="col-span-2 md:col-span-3 lg:col-span-4">
-            <p className="text-label text-interactive uppercase">{site.positioning}</p>
-            <p className="mt-stack-sm max-w-sm text-body-sm text-slate">{site.description}</p>
+      <Container className="pt-section-sm pb-stack-lg">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-stack-lg md:grid-cols-6 lg:grid-cols-12">
+          {/* Brand */}
+          <div className="col-span-2 md:col-span-6 lg:col-span-12 xl:col-span-4">
+            <div className="inline-flex rounded-lg bg-white px-3.5 py-2.5 shadow-soft">
+              <Logo preload={false} />
+            </div>
+            <p className="mt-stack font-display text-h4 text-white">{site.tagline}</p>
+            <p className="mt-stack-sm max-w-md text-body-sm text-silver">{footer.description}</p>
+            <Button href={footer.cta.href} size="md" arrow className="mt-stack">
+              {footer.cta.label}
+            </Button>
           </div>
 
-          <nav aria-labelledby="footer-company" className="lg:col-span-2">
-            <h3 id="footer-company" className={headingClass}>
-              {footerNav.company.title}
+          {/* Explore */}
+          <nav aria-labelledby="footer-explore" className="col-span-2 md:col-span-2 lg:col-span-3 xl:col-span-2">
+            <h3 id="footer-explore" className={headingClass}>
+              {footer.explore.title}
             </h3>
-            <ul className="mt-stack-sm flex flex-col gap-1">
-              {footerNav.company.links.map((link) => (
+            {/* Two short columns on phones, one list from tablet up */}
+            <ul className="mt-stack-sm grid grid-cols-2 gap-x-8 gap-y-0.5 md:flex md:flex-col">
+              {footer.explore.links.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className={linkClass}>
                     {link.label}
@@ -74,12 +68,12 @@ export function Footer() {
             </ul>
           </nav>
 
-          {/* On phones, Company and Get started share a row and Services follows. */}
-          <nav aria-labelledby="footer-services" className="col-span-2 max-md:order-last md:col-span-1 lg:col-span-3">
+          {/* Services: the widest link column, so long names stay on one line on desktop */}
+          <nav aria-labelledby="footer-services" className="col-span-2 md:col-span-4 lg:col-span-5 xl:col-span-3">
             <h3 id="footer-services" className={headingClass}>
-              {footerNav.services.title}
+              {footer.services.title}
             </h3>
-            <ul className="mt-stack-sm flex flex-col gap-1">
+            <ul className="mt-stack-sm flex flex-col gap-0.5">
               {services.map((service) => (
                 <li key={service.slug}>
                   <Link href={serviceHref(service.slug)} className={linkClass}>
@@ -87,44 +81,73 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link href={footerNav.services.allHref} className={`${linkBase} font-medium text-interactive`}>
-                  {footerNav.services.allLabel}
-                </Link>
-              </li>
             </ul>
           </nav>
 
-          <nav aria-labelledby="footer-start" className="lg:col-span-3">
-            <h3 id="footer-start" className={headingClass}>
-              {footerNav.start.title}
+          {/* Get in touch (and Follow Us, once verified profiles exist) */}
+          <div className="col-span-2 md:col-span-6 lg:col-span-4 xl:col-span-3">
+            <h3 id="footer-contact" className={headingClass}>
+              {footer.contact.title}
             </h3>
-            <ul className="mt-stack-sm flex flex-col gap-1">
-              {footerNav.start.links.map((link) => (
-                <li key={link.label}>
-                  <Link href={link.href} className={linkClass}>
+            <ul aria-labelledby="footer-contact" className="mt-stack-sm flex flex-col gap-2.5">
+              <li>
+                <a
+                  href={`mailto:${site.contact.email}`}
+                  className="group/mail inline-flex items-center gap-2.5 rounded-xs text-body-sm text-silver transition-colors duration-(--duration-fast) hover:text-white"
+                >
+                  <span className="grid size-8 shrink-0 place-items-center rounded-pill bg-white/10 text-white ring-1 ring-white/15 transition-colors duration-(--duration-base) group-hover/mail:bg-electric">
+                    <Mail aria-hidden="true" className="size-4" strokeWidth={2} />
+                  </span>
+                  <span className="min-w-0 [overflow-wrap:anywhere]">
+                    <span className="sr-only">{footer.contact.emailLabel}: </span>
+                    {site.contact.email}
+                  </span>
+                </a>
+              </li>
+              <li>
+                <Link href={footer.contact.contactLink.href} className={linkClass}>
+                  {footer.contact.contactLink.label}
+                </Link>
+              </li>
+            </ul>
+
+            {social.profiles.length > 0 && (
+              <nav aria-labelledby="footer-social" className="mt-stack-lg">
+                <h3 id="footer-social" className={headingClass}>
+                  {social.title}
+                </h3>
+                <ul className="mt-stack-sm flex flex-wrap gap-2">
+                  {social.profiles.map((profile) => (
+                    <li key={profile.href}>
+                      <a href={profile.href} rel="noopener noreferrer" target="_blank" className={linkClass}>
+                        {profile.platform}
+                        <span className="sr-only"> (opens in a new tab)</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            )}
+          </div>
+        </div>
+
+        {/* Legal and copyright */}
+        <div className="mt-stack-lg flex flex-col gap-3 border-t border-white/10 pt-stack text-body-sm text-silver/80 md:flex-row md:items-center md:justify-between">
+          <p>
+            &copy; <CopyrightYear buildYear={buildYear} /> {site.name}. All rights reserved.
+          </p>
+          <nav aria-label="Legal">
+            <ul className="flex flex-wrap gap-x-6 gap-y-1">
+              {footer.legal.map((link) => (
+                <li key={link.href}>
+                  {/* Legal pages are planned, not yet built: no prefetching until they exist */}
+                  <Link href={link.href} prefetch={false} className={linkClass}>
                     {link.label}
                   </Link>
                 </li>
               ))}
-              <li>
-                <a href={`mailto:${site.contact.email}`} className={linkClass}>
-                  Email us
-                </a>
-              </li>
             </ul>
           </nav>
-        </div>
-
-        {/* Legal line */}
-        <div className="mt-stack-lg flex flex-col gap-3 border-t border-line pt-stack text-body-sm text-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            &copy; {year} {site.name}. All rights reserved.
-          </p>
-          <a href="#main-content" className={`${linkBase} items-center gap-2 self-start text-muted sm:self-auto`}>
-            Back to top
-            <ArrowUp aria-hidden="true" className="size-3.5" strokeWidth={2.25} />
-          </a>
         </div>
       </Container>
     </footer>
