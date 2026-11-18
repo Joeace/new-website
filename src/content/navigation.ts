@@ -39,12 +39,14 @@ export function isActivePath(pathname: string, href: string) {
   return target === "/" ? current === "/" : current.startsWith(target);
 }
 
+export type SocialPlatform = "LinkedIn" | "Instagram" | "Facebook" | "X" | "TikTok" | "YouTube";
+
 /**
  * Global footer content. Services are listed from content/services.ts and
  * contact details from content/site.ts.
- * No social profiles have been supplied, so no social links are shown;
- * add verified profile URLs to `social` to display the Follow Us group.
- * Legal routes are planned; the pages are built in a later phase.
+ * Social profiles and the phone number and location (content/site.ts) are
+ * PLACEHOLDERS until the real details are supplied.
+ * Legal pages exist as "in development" notices until the documents are written.
  */
 export const footer = {
   description:
@@ -65,8 +67,17 @@ export const footer = {
   contact: { title: "Get in Touch", emailLabel: "Email", contactLink: { label: "Contact Us", href: "/contact/" } },
   social: {
     title: "Follow Us",
-    /* e.g. { platform: "LinkedIn", href: "https://www.linkedin.com/company/..." } */
-    profiles: [] as { platform: string; href: string }[],
+    /* PLACEHOLDER: guessed handles, not yet verified as Mota Content Media's
+       accounts. Replace each href with the real profile URL (or remove the
+       entry) before launch. */
+    profiles: [
+      { platform: "LinkedIn", href: "https://www.linkedin.com/company/motacontentmedia" },
+      { platform: "Instagram", href: "https://www.instagram.com/motacontentmedia" },
+      { platform: "Facebook", href: "https://www.facebook.com/motacontentmedia" },
+      { platform: "X", href: "https://x.com/motacontentmedia" },
+      { platform: "TikTok", href: "https://www.tiktok.com/@motacontentmedia" },
+      { platform: "YouTube", href: "https://www.youtube.com/@motacontentmedia" },
+    ] as { platform: SocialPlatform; href: string }[],
   },
   legal: [
     { label: "Privacy Policy", href: "/privacy-policy/" },

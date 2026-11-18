@@ -80,7 +80,7 @@ public/
 | `/contact/` | Email contact (address set in `src/content/site.ts`) |
 | `/about/`, `/work/`, `/insights/`, `/create-your-service/` | Planned pages showing an "in development" notice |
 
-Navigation items and services are defined once in `src/content/` and shared by the header, mega menu, mobile menu and pages. Footer content (links, legal routes and social profiles) lives in `footer` in `src/content/navigation.ts`; add verified social profile URLs there to show the Follow Us group. Legal routes `/privacy-policy/`, `/terms-and-conditions/` and `/cookie-policy/` are planned and not yet built.
+Navigation items and services are defined once in `src/content/` and shared by the header, mega menu, mobile menu and pages. Footer content (links, legal routes and social profiles) lives in `footer` in `src/content/navigation.ts`; the social profiles there, and the phone number and location in `src/content/site.ts`, are **placeholders** (marked `PLACEHOLDER` in the code) until the real details are supplied. The legal pages `/privacy-policy/`, `/terms-and-conditions/` and `/cookie-policy/` show an "in development" notice until the documents are written.
 
 Run `npm run dev` and open `/design-system/` to see every token and component. Files ending in `.dev.tsx` are routes only in development and are never built into the live site.
 

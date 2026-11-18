@@ -1,4 +1,4 @@
-import { Mail } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import { Logo } from "@/components/navigation/Logo";
 import { Button } from "@/components/ui/Button";
@@ -7,6 +7,7 @@ import { footer } from "@/content/navigation";
 import { serviceHref, services } from "@/content/services";
 import { site } from "@/content/site";
 import { CopyrightYear } from "./CopyrightYear";
+import { SocialIcon } from "./SocialIcon";
 
 /* Links: silver at rest, white on hover with a short electric underline. */
 const linkClass =
@@ -19,8 +20,8 @@ const headingClass = "text-label text-white uppercase";
  * Global footer, rendered once in the root layout.
  * Midnight background, white headings, silver secondary text, electric accents.
  * The supplied logo sits on a white nameplate so it appears exactly as
- * provided. Only verified contact details are shown; social links appear only
- * when profile URLs are added in content/navigation.ts.
+ * provided. Phone, location and social profiles are PLACEHOLDERS (see
+ * content/site.ts and content/navigation.ts) until the real details exist.
  */
 export function Footer() {
   const { social } = footer;
@@ -105,6 +106,29 @@ export function Footer() {
                 </a>
               </li>
               <li>
+                <a
+                  href={site.contact.phone.href}
+                  className="group/phone inline-flex items-center gap-2.5 rounded-xs text-body-sm text-silver transition-colors duration-(--duration-fast) hover:text-white"
+                >
+                  <span className="grid size-8 shrink-0 place-items-center rounded-pill bg-white/10 text-white ring-1 ring-white/15 transition-colors duration-(--duration-base) group-hover/phone:bg-electric">
+                    <Phone aria-hidden="true" className="size-4" strokeWidth={2} />
+                  </span>
+                  <span>
+                    <span className="sr-only">Telephone: </span>
+                    {site.contact.phone.display}
+                  </span>
+                </a>
+              </li>
+              <li className="inline-flex items-center gap-2.5 text-body-sm text-silver">
+                <span aria-hidden="true" className="grid size-8 shrink-0 place-items-center rounded-pill bg-white/10 text-white ring-1 ring-white/15">
+                  <MapPin className="size-4" strokeWidth={2} />
+                </span>
+                <span>
+                  <span className="sr-only">Location: </span>
+                  {site.contact.location}
+                </span>
+              </li>
+              <li>
                 <Link href={footer.contact.contactLink.href} className={linkClass}>
                   {footer.contact.contactLink.label}
                 </Link>
@@ -116,12 +140,17 @@ export function Footer() {
                 <h3 id="footer-social" className={headingClass}>
                   {social.title}
                 </h3>
-                <ul className="mt-stack-sm flex flex-wrap gap-2">
+                <ul className="mt-stack-sm flex flex-wrap gap-1.5">
                   {social.profiles.map((profile) => (
                     <li key={profile.href}>
-                      <a href={profile.href} rel="noopener noreferrer" target="_blank" className={linkClass}>
-                        {profile.platform}
-                        <span className="sr-only"> (opens in a new tab)</span>
+                      <a
+                        href={profile.href}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                        aria-label={`${site.name} on ${profile.platform} (opens in a new tab)`}
+                        className="grid size-9 place-items-center rounded-pill bg-white/10 text-silver ring-1 ring-white/15 transition-[background-color,color,translate] duration-(--duration-base) ease-out-expo hover:-translate-y-0.5 hover:bg-electric hover:text-white"
+                      >
+                        <SocialIcon platform={profile.platform} className="size-4" />
                       </a>
                     </li>
                   ))}
@@ -140,8 +169,7 @@ export function Footer() {
             <ul className="flex flex-wrap gap-x-6 gap-y-1">
               {footer.legal.map((link) => (
                 <li key={link.href}>
-                  {/* Legal pages are planned, not yet built: no prefetching until they exist */}
-                  <Link href={link.href} prefetch={false} className={linkClass}>
+                  <Link href={link.href} className={linkClass}>
                     {link.label}
                   </Link>
                 </li>
