@@ -247,3 +247,18 @@ export const audiences = {
   ],
   link: { label: "Explore Our Services", href: "/services/" },
 } as const;
+
+/**
+ * "Trust & partnership". No verified client logos or testimonials exist
+ * yet, so none are shown: add them here only when genuine and authorised.
+ */
+export const trust = {
+  eyebrow: "Trust & Partnership",
+  heading: { lead: "Built on Creativity.", accent: "Strengthened by Collaboration." },
+  body: "We believe great work begins with understanding, grows through collaboration and is strengthened by delivering on shared objectives.",
+  /* The three ideas in the sentence above, as scannable principles. */
+  principles: ["Begins with understanding", "Grows through collaboration", "Delivers on shared objectives"],
+  /* Shown in place of a client logo strip until verified logos exist. */
+  statement:
+    "Whether you are launching a new venture, growing an established business or building a personal brand, Mota Content Media aims to be a creative partner that listens first, communicates clearly and shapes every solution around your objectives.",
+} as const;

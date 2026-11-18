@@ -4,6 +4,7 @@ import { HomeAudiences } from "@/components/home/HomeAudiences";
 import { HomeFeaturedWork } from "@/components/home/HomeFeaturedWork";
 import { HomeHero } from "@/components/home/HomeHero";
 import { HomeServices } from "@/components/home/HomeServices";
+import { HomeTrust } from "@/components/home/HomeTrust";
 import { HomeWhyChoose } from "@/components/home/HomeWhyChoose";
 
 export default function HomePage() {
@@ -16,6 +17,7 @@ export default function HomePage() {
       <HomeApproach />
       <HomeFeaturedWork />
       <HomeAudiences />
+      <HomeTrust />
     </>
   );
 }

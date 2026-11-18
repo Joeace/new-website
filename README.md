@@ -8,7 +8,7 @@ Website for Mota Content Media, a creative technology and digital marketing agen
 
 | Concern | Choice |
 | --- | --- |
-| Framework | Next.js 16 (App Router), React 19, TypeScript |
+| Framework | Next.js 16.4.6 (App Router), React 19, TypeScript |
 | Styling | Tailwind CSS v4, with design tokens in `src/app/globals.css` |
 | Motion | Motion for React (`motion/react`) |
 | Fonts | Manrope (headings) and Inter (body), self-hosted at build time via `next/font` |
@@ -59,7 +59,7 @@ src/
     navigation/         Header, DesktopNavigation, ServicesMegaMenu, MobileNavigation,
                         NavigationLink, Logo
     sections/           PageIntro (shared inner-page opening)
-    home/               HomeHero, CreativeUniverse, universe/Illustrations, HomeAbout, AboutVisual, HomeServices, services/ServiceMotif, HomeWhyChoose, HomeApproach, HomeFeaturedWork, projects/ProjectArtwork, HomeAudiences
+    home/               HomeHero, CreativeUniverse, universe/Illustrations, HomeAbout, AboutVisual, HomeServices, services/ServiceMotif, HomeWhyChoose, HomeApproach, HomeFeaturedWork, projects/ProjectArtwork, HomeAudiences, HomeTrust
     ui/                 Heading, Accent, Eyebrow, Text, Button, Card, Chip, Container,
                         Section, SectionHeading, Grid, Divider, MediaFrame, IconFrame
     cards/              Service, ServicePillar, Project, Feature, Portfolio, Testimonial, Industry, Article
@@ -74,7 +74,7 @@ public/
 
 | Route | Status |
 | --- | --- |
-| `/` | Homepage: hero, About, What We Do, Why Choose Mota Content Media, How We Work, Selected Creative Work and Who We Work With |
+| `/` | Homepage: hero, About, What We Do, Why Choose Mota Content Media, How We Work, Selected Creative Work, Who We Work With and Trust & Partnership |
 | `/services/` | Six service cards |
 | `/services/[slug]/` | One page per service, generated from `content/services.ts`: `content-writing`, `audio-production`, `video-production`, `graphic-design`, `social-media`, `digital-marketing` |
 | `/contact/` | Email contact (address set in `src/content/site.ts`) |
