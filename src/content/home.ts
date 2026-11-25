@@ -35,11 +35,6 @@ export const servicesSection = {
     "From compelling content and powerful visuals to strategic marketing and intelligent digital solutions, we bring the expertise businesses need to build their presence, connect with audiences and grow.",
   capabilitiesLabel: "Key capabilities",
   cardCue: "Explore Service",
-  cta: {
-    heading: "Not Sure Which Service Is Right for You?",
-    body: "Every business is different. Tell us what you\u2019re trying to achieve and we\u2019ll help you build a solution around your goals.",
-    button: { label: "Create Your Service", href: "/create-your-service/" },
-  },
 } as const;
 
 /** "Why choose Mota Content Media?" homepage section. */
@@ -98,12 +93,6 @@ export const whyChoose = {
         "We look beyond individual deliverables. Our aim is to help businesses build stronger digital foundations, develop lasting relationships with their audiences and create opportunities for continued growth.",
     },
   ],
-  closing: {
-    statement: "Your ambitions deserve more than ordinary solutions. Let\u2019s create something meaningful together.",
-    body: "Whether you need creative content, a stronger digital presence or an integrated marketing strategy, Mota Content Media is ready to help you take the next step.",
-    primaryCta: { label: "Let\u2019s Work Together", href: "/contact/" },
-    secondaryCta: { label: "Create Your Service", href: "/create-your-service/" },
-  },
 } as const;
 
 /** "How we work": the five-stage process. */
@@ -159,12 +148,6 @@ export const approach = {
       scopeNote: "Depends on project scope",
     },
   ],
-  closing: {
-    statement: "Every great project starts with a conversation.",
-    body: "Tell us what you want to achieve. We\u2019ll help you identify the right creative and digital solutions to get started.",
-    primaryCta: { label: "Start a Conversation", href: "/contact/" },
-    secondaryCta: { label: "Create Your Service", href: "/create-your-service/" },
-  },
 } as const;
 
 /**
@@ -275,4 +258,16 @@ export const trust = {
       context: "Rebranding client",
     },
   ],
+} as const;
+
+/**
+ * Homepage finale: the single closing call to action. Brings together the
+ * approved closing lines that previously ended Services, Why Choose and
+ * How We Work as separate panels.
+ */
+export const finale = {
+  statement: "Every great project starts with a conversation.",
+  body: "Your ambitions deserve more than ordinary solutions. Tell us what you want to achieve and we\u2019ll help you identify the right creative and digital solutions to get started.",
+  primaryCta: { label: "Start a Conversation", href: "/contact/" },
+  secondaryCta: { label: "Create Your Service", href: "/create-your-service/" },
 } as const;

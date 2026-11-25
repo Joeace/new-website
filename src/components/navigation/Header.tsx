@@ -71,7 +71,8 @@ export function Header() {
           !menuOpen &&
             compact &&
             "border-line bg-white/95 shadow-[0_8px_24px_-16px_rgb(23_36_58/0.18)] supports-[backdrop-filter]:bg-white/85 supports-[backdrop-filter]:backdrop-blur-xl",
-          !menuOpen && !compact && "border-transparent bg-white",
+          /* Transparent at the top, so the hero runs up behind it */
+          !menuOpen && !compact && "border-transparent bg-transparent",
         )}
       >
         <Container

@@ -1,26 +1,25 @@
 import type { CSSProperties } from "react";
 import { ServicePillarCard } from "@/components/cards/ServicePillarCard";
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Grid } from "@/components/ui/Grid";
-import { Accent, Heading } from "@/components/ui/Heading";
+import { Accent } from "@/components/ui/Heading";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Text } from "@/components/ui/Text";
+import { SignalMark } from "@/components/ui/SignalMark";
 import { servicesSection } from "@/content/home";
 import { serviceHref, services } from "@/content/services";
 
 /**
- * "What we do": the six service pillars and a tailored-solution CTA.
+ * "What we do": the six service pillars. (The tailored-solution CTA now
+ * lives in the homepage finale.)
  * An ice band separates it from the white About section; white cards sit on it.
  * Cards rise in with the CSS scroll-reveal utility, staggered across each row.
  */
 export function HomeServices() {
-  const { cta } = servicesSection;
-
   return (
     <Section id="services" aria-labelledby="services-heading" tone="ice" spacing="lg" className="overflow-x-clip">
       <Container>
+        <SignalMark />
         <SectionHeading
           eyebrow={servicesSection.eyebrow}
           title={
@@ -52,25 +51,6 @@ export function HomeServices() {
           ))}
         </Grid>
 
-        {/* Closing CTA: restrained, distinct from the cards */}
-        <div className="relative isolate mt-section-sm scroll-reveal overflow-hidden rounded-xl bg-white p-card-lg shadow-soft ring-1 ring-line/70">
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-glow" />
-          <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-0 -z-10 w-1/2 bg-grid opacity-80" />
-          <div className="flex flex-col gap-stack lg:flex-row lg:items-center lg:justify-between lg:gap-layout-lg">
-            <div className="max-w-2xl">
-              <span aria-hidden="true" className="block h-[3px] w-12 rounded-pill bg-electric" />
-              <Heading as="h3" size="h2" className="mt-stack text-deep">
-                {cta.heading}
-              </Heading>
-              <Text size="body-lg" className="mt-stack-sm">
-                {cta.body}
-              </Text>
-            </div>
-            <Button href={cta.button.href} size="lg" arrow className="shrink-0 max-sm:w-full">
-              {cta.button.label}
-            </Button>
-          </div>
-        </div>
       </Container>
     </Section>
   );

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Accent, Eyebrow, Heading } from "@/components/ui/Heading";
 import { Section } from "@/components/ui/Section";
+import { SignalMark } from "@/components/ui/SignalMark";
 import { Text } from "@/components/ui/Text";
 import { about } from "@/content/home";
 import { AboutVisual } from "./AboutVisual";
@@ -27,7 +28,8 @@ export function HomeAbout() {
       <Container className="grid gap-y-stack-lg lg:grid-cols-12 lg:gap-x-8 lg:gap-y-0">
         {/* Heading */}
         <header className="scroll-reveal lg:col-span-10 lg:col-start-1 lg:row-start-1 lg:pb-section-sm">
-          <Eyebrow rule>{about.eyebrow}</Eyebrow>
+          <SignalMark />
+            <Eyebrow rule>{about.eyebrow}</Eyebrow>
           <Heading as="h2" size="h1" id="about-heading" className="mt-stack max-w-4xl">
             <span className="md:block">{about.heading.lead} </span>
             <Accent>{about.heading.accent}</Accent>

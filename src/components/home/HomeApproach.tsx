@@ -1,12 +1,10 @@
 import { ChartLine, Check, Compass, PenTool, Rocket, Search, type LucideIcon } from "lucide-react";
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { Divider } from "@/components/ui/Divider";
 import { Accent, Eyebrow, Heading } from "@/components/ui/Heading";
 import { Section } from "@/components/ui/Section";
+import { SignalMark } from "@/components/ui/SignalMark";
 import { Text } from "@/components/ui/Text";
 import { approach } from "@/content/home";
-import { cn } from "@/lib/utils";
 
 /* Discover, Strategise, Create, Execute, Measure & Optimise */
 const icons: LucideIcon[] = [Search, Compass, PenTool, Rocket, ChartLine];
@@ -24,20 +22,18 @@ const stageAnchor = (id: string) => `approach-${id}`;
  *   3. Vertical timeline: a connecting line that fills with electric blue
  *      as you scroll, and a node per stage that lights up while centred.
  *      Every stage shows all of its content; nothing needs a click.
- *   4. Closing message and CTAs.
  *
  * All motion is CSS scroll-driven (no JavaScript) and is switched off for
  * reduced motion and in browsers without support.
  */
 export function HomeApproach() {
-  const { closing } = approach;
-
   return (
     <Section id="approach" aria-labelledby="approach-heading" tone="ice" spacing="lg" className="overflow-x-clip">
       <Container>
         {/* 1. Introduction */}
         <div className="grid gap-y-stack lg:grid-cols-12 lg:items-end lg:gap-x-8">
           <div className="scroll-reveal lg:col-span-7">
+            <SignalMark />
             <Eyebrow rule>{approach.eyebrow}</Eyebrow>
             <Heading as="h2" size="h1" id="approach-heading" className="mt-stack">
               <span className="block">{approach.heading.lead}</span>
@@ -136,22 +132,6 @@ export function HomeApproach() {
           })}
         </ol>
 
-        {/* 4. Closing message */}
-        <div className={cn("mt-section-sm flex scroll-reveal flex-col items-center text-center")}>
-          <Divider variant="accent" />
-          <p className="mt-stack max-w-3xl font-display text-h2 text-balance text-ink">{closing.statement}</p>
-          <Text size="body-lg" className="mt-stack-sm max-w-2xl">
-            {closing.body}
-          </Text>
-          <div className="mt-stack-lg flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row">
-            <Button href={closing.primaryCta.href} size="lg" arrow className="max-sm:w-full">
-              {closing.primaryCta.label}
-            </Button>
-            <Button href={closing.secondaryCta.href} size="lg" variant="secondary" className="max-sm:w-full">
-              {closing.secondaryCta.label}
-            </Button>
-          </div>
-        </div>
       </Container>
     </Section>
   );

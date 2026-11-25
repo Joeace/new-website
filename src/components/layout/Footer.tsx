@@ -178,6 +178,13 @@ export function Footer() {
           </nav>
         </div>
       </Container>
+
+      {/* Oversized wordmark along the base, sized to the viewport so it fits one line */}
+      <Container aria-hidden="true" className="overflow-hidden">
+        <p className="-mb-[0.18em] font-display text-[clamp(1.5rem,7.4vw,6.9rem)] leading-none font-extrabold tracking-[-0.05em] whitespace-nowrap text-white/[0.07] select-none">
+          {site.name}
+        </p>
+      </Container>
     </footer>
   );
 }

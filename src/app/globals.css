@@ -192,6 +192,9 @@
   --animate-float: float var(--float-duration, 7s) ease-in-out infinite alternate;
   --animate-orbit: orbit 140s linear infinite;
   --animate-fade-in: fade-in 1.2s var(--ease-standard) both;
+  --animate-marquee: marquee var(--marquee-duration, 45s) linear infinite;
+  --animate-spark: spark var(--spark-duration, 6s) var(--ease-in-out-quart) infinite;
+  --animate-draw-down: grow-y 1.4s var(--ease-out-expo) both;
 
   @keyframes rise {
     from {
@@ -238,6 +241,23 @@
   @keyframes grow-x {
     from {
       transform: scaleX(0);
+    }
+  }
+
+  /* Seamless horizontal loop: content is rendered twice. */
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* A short dash travelling along an arc (the "signal" spark). */
+  @keyframes spark {
+    from {
+      stroke-dashoffset: 0;
+    }
+    to {
+      stroke-dashoffset: var(--spark-travel, -230);
     }
   }
 

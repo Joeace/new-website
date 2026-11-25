@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Accent, Eyebrow, Heading } from "@/components/ui/Heading";
 import { Section } from "@/components/ui/Section";
+import { SignalMark } from "@/components/ui/SignalMark";
 import { Text } from "@/components/ui/Text";
 import { featuredWork } from "@/content/home";
 import {
@@ -50,6 +51,7 @@ export function HomeFeaturedWork() {
         {/* Introduction */}
         <div className="grid gap-y-stack lg:grid-cols-12 lg:items-end lg:gap-x-8">
           <div className="scroll-reveal lg:col-span-7">
+            <SignalMark />
             <Eyebrow rule>{featuredWork.eyebrow}</Eyebrow>
             <Heading as="h2" size="h1" id="work-heading" className="mt-stack">
               <span className="block">{featuredWork.heading.lead}</span>

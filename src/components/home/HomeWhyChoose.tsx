@@ -10,11 +10,11 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import type { CSSProperties } from "react";
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Accent, Eyebrow, Heading } from "@/components/ui/Heading";
 import { IconFrame } from "@/components/ui/Icon";
 import { Section } from "@/components/ui/Section";
+import { SignalMark } from "@/components/ui/SignalMark";
 import { Text } from "@/components/ui/Text";
 import { whyChoose } from "@/content/home";
 
@@ -29,17 +29,15 @@ const icons: LucideIcon[] = [BrainCircuit, PencilRuler, Target, HeartHandshake, 
  *      the supporting statement and introduction on the right.
  *   2. Eight advantages in a hairline-ruled grid (4 / 2 / 1 columns) with
  *      large outlined numerals; no boxed cards.
- *   3. A midnight closing panel with the statement and two CTAs.
  */
 export function HomeWhyChoose() {
-  const { closing } = whyChoose;
-
   return (
     <Section id="why-mota-content-media" aria-labelledby="why-heading" spacing="lg" className="overflow-x-clip">
       <Container>
         {/* 1. Introduction */}
         <div className="grid gap-y-stack-lg lg:grid-cols-12 lg:gap-x-8">
           <div className="scroll-reveal lg:col-span-5">
+            <SignalMark />
             <Eyebrow rule>{whyChoose.eyebrow}</Eyebrow>
             <Heading as="h2" size="h1" id="why-heading" className="mt-stack max-w-xl">
               {whyChoose.heading}
@@ -104,26 +102,6 @@ export function HomeWhyChoose() {
           })}
         </ol>
 
-        {/* 3. Closing statement and actions */}
-        <div className="relative isolate mt-section-sm scroll-reveal overflow-hidden rounded-xl bg-midnight p-card-lg text-white">
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(40rem_24rem_at_100%_0%,rgb(47_128_237/0.35),transparent_70%)]" />
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-grid opacity-50 invert" />
-          <span aria-hidden="true" className="block h-[3px] w-12 rounded-pill bg-electric" />
-          <p className="mt-stack max-w-4xl font-display text-h2 text-balance text-white">{closing.statement}</p>
-          <div className="mt-stack flex flex-col gap-stack-lg lg:flex-row lg:items-end lg:justify-between lg:gap-layout-lg">
-            <Text tone="inverse" size="body-lg" className="max-w-2xl">
-              {closing.body}
-            </Text>
-            <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
-              <Button href={closing.primaryCta.href} size="lg" arrow className="max-sm:w-full">
-                {closing.primaryCta.label}
-              </Button>
-              <Button href={closing.secondaryCta.href} size="lg" variant="inverse" className="max-sm:w-full">
-                {closing.secondaryCta.label}
-              </Button>
-            </div>
-          </div>
-        </div>
       </Container>
     </Section>
   );

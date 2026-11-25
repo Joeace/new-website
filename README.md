@@ -59,7 +59,7 @@ src/
     navigation/         Header, DesktopNavigation, ServicesMegaMenu, MobileNavigation,
                         NavigationLink, Logo
     sections/           PageIntro (shared inner-page opening)
-    home/               HomeHero, CreativeUniverse, universe/Illustrations, HomeAbout, AboutVisual, HomeServices, services/ServiceMotif, HomeWhyChoose, HomeApproach, HomeFeaturedWork, projects/ProjectArtwork, HomeAudiences, HomeTrust
+    home/               HomeHero, SignalSignature, HomeFinale, HomeAbout, AboutVisual, HomeServices, services/ServiceMotif, HomeWhyChoose, HomeApproach, HomeFeaturedWork, projects/ProjectArtwork, HomeAudiences, HomeTrust
     ui/                 Heading, Accent, Eyebrow, Text, Button, Card, Chip, Container,
                         Section, SectionHeading, Grid, Divider, MediaFrame, IconFrame
     cards/              Service, ServicePillar, Project, Feature, Portfolio, Testimonial, Industry, Article
@@ -74,7 +74,7 @@ public/
 
 | Route | Status |
 | --- | --- |
-| `/` | Homepage: hero, About, What We Do, Why Choose Mota Content Media, How We Work, Selected Creative Work, Who We Work With and Trust & Partnership |
+| `/` | Homepage: hero, About, What We Do, Why Choose Mota Content Media, How We Work, Selected Creative Work, Who We Work With, Trust & Partnership and the closing finale |
 | `/services/` | Six service cards |
 | `/services/[slug]/` | One page per service, generated from `content/services.ts`: `content-writing`, `audio-production`, `video-production`, `graphic-design`, `social-media`, `digital-marketing` |
 | `/contact/` | Email contact (address set in `src/content/site.ts`) |
@@ -147,6 +147,10 @@ Headings use Manrope (`font-display`); everything else uses Inter (`font-sans`).
 CSS transitions handle hover and focus: 150ms colour, 250ms buttons and links, 500ms cards and 800ms reveals, using `ease-standard` and `ease-out-expo`. `Reveal` handles entrance animation. `MotionProvider` and a global CSS rule both honour `prefers-reduced-motion`.
 
 Scroll-linked effects that need no JavaScript use the `scroll-reveal`, `scroll-drift`, `scroll-grow-x`, `scroll-grow-y` and `scroll-spotlight` utilities (CSS scroll-driven animations). Browsers without support, and visitors who prefer reduced motion, see the content in its final position.
+
+## Art direction: "The Signal"
+
+The blue C of the MCM monogram is the site's signature. In the hero it becomes an electric C-shaped arc (open on the right, like the letter) with a travelling spark around the logo disc; a signal line leaves the bottom of the C, and `SignalMark` draws a short electric line into each chapter's heading as it reaches mid-screen. The homepage ends in one electric finale (`HomeFinale`) instead of per-section call-to-action panels. Stage 1 (identity) is in place; stages 2 (services index and work showcase in midnight and deep-blue chapters) and 3 (story sections, merged Why Choose and How We Work) follow.
 
 ## Content rules
 

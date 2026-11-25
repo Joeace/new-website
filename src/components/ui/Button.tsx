@@ -30,6 +30,12 @@ const variants = {
     "hover:-translate-y-px hover:bg-ice " +
     "active:translate-y-0 active:bg-silver " +
     "disabled:translate-y-0 disabled:bg-white/40 disabled:text-deep/60",
+  /* Transparent with a white outline, for blue and midnight backgrounds. */
+  "outline-inverse":
+    "rounded-pill text-white ring-[1.5px] ring-white/70 ring-inset " +
+    "hover:-translate-y-px hover:bg-white/10 hover:ring-white " +
+    "active:translate-y-0 active:bg-white/15 " +
+    "disabled:translate-y-0 disabled:text-white/50 disabled:ring-white/30",
   text:
     "rounded-xs text-interactive underline-offset-[6px] decoration-[1.5px] " +
     "hover:text-interactive-hover hover:underline active:text-interactive-active " +

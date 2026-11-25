@@ -2,6 +2,7 @@ import { HomeAbout } from "@/components/home/HomeAbout";
 import { HomeApproach } from "@/components/home/HomeApproach";
 import { HomeAudiences } from "@/components/home/HomeAudiences";
 import { HomeFeaturedWork } from "@/components/home/HomeFeaturedWork";
+import { HomeFinale } from "@/components/home/HomeFinale";
 import { HomeHero } from "@/components/home/HomeHero";
 import { HomeServices } from "@/components/home/HomeServices";
 import { HomeTrust } from "@/components/home/HomeTrust";
@@ -18,6 +19,7 @@ export default function HomePage() {
       <HomeFeaturedWork />
       <HomeAudiences />
       <HomeTrust />
+      <HomeFinale />
     </>
   );
 }
