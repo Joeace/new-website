@@ -46,6 +46,8 @@ const sizes = {
   sm: "h-10 px-4 text-body-sm",
   md: "h-12 px-6",
   lg: "h-14 px-8 text-body",
+  /* Hero-scale call to action */
+  xl: "h-14 px-8 text-body md:h-16 md:px-10 md:text-body-lg",
 } as const;
 
 type StyleProps = {

@@ -3,67 +3,86 @@ import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Heading";
 import { hero } from "@/content/home";
 import { services } from "@/content/services";
-import { SignalSignature } from "./SignalSignature";
+import { cn } from "@/lib/utils";
+import { CreativeUniverse } from "./hero/CreativeUniverse";
 
 /**
- * Homepage hero: "The Signal".
- * Poster-scale headline beside the MCM signature, closing on a slow ticker
- * of the six disciplines. The section slides under the transparent header
- * (negative top margin equal to the header spacer). Copy is server-rendered
- * with CSS-only entrances, so the headline paints immediately.
+ * Homepage hero: "The Mota Content Media Creative Universe".
+ *
+ * Desktop: an expressive headline (small lead-in lines alternating with
+ * giant words, sized to the text column with container query units) beside
+ * a 3D creative universe that fills the right half of the screen and bleeds
+ * off its edge. Tablet and phone: headline first, then the universe below.
+ * Copy is server-rendered with CSS-only entrances, so it paints immediately.
  */
 export function HomeHero() {
-  const [lineOne, lineTwo, lineThree] = hero.headline;
   const disciplines = services.map((s) => s.title.split(" & ")[0]);
 
   return (
     <section
       aria-labelledby="hero-heading"
-      className="relative isolate -mt-nav flex min-h-[min(100svh,60rem)] flex-col overflow-x-clip bg-white pt-nav"
+      className="relative isolate -mt-nav flex min-h-[min(100svh,64rem)] flex-col overflow-x-clip bg-white pt-nav"
     >
-      {/* Atmosphere */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-glow" />
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-grid opacity-60" />
+      {/* Atmosphere: white and ice, with blue light gathered behind the universe */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-grid opacity-50" />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-[10%] -right-[18%] -z-10 size-[min(70vw,58rem)] rounded-pill bg-[radial-gradient(circle,rgb(47_128_237/0.14),transparent_62%)]"
+        className="pointer-events-none absolute -z-10 max-lg:inset-x-0 max-lg:bottom-0 max-lg:h-[60%] lg:inset-y-0 lg:right-0 lg:w-[62%] bg-[radial-gradient(60%_55%_at_60%_50%,rgb(47_128_237/0.16),transparent_70%),linear-gradient(180deg,transparent,rgb(244_247_251/0.9))]"
       />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-40 bg-linear-to-b from-transparent to-ice/80" />
 
-      <Container className="grid flex-1 items-center gap-y-12 py-stack-lg lg:grid-cols-12 lg:gap-x-8 lg:py-stack">
-        <div className="relative z-20 lg:col-span-8">
-          <Eyebrow className="animate-rise tracking-[0.12em] [animation-delay:50ms] max-sm:text-[0.6875rem]">{hero.eyebrow}</Eyebrow>
+      <div className="relative flex flex-1 flex-col lg:justify-center">
+        {/* On desktop this container spans the full width above the universe, so it
+            lets pointer events through; only the text block itself takes them. */}
+        <Container className="pointer-events-none relative z-20 py-stack-lg lg:py-stack-sm">
+          <div className="pointer-events-auto @container lg:w-[50%] xl:w-[48%]">
+            <Eyebrow className="animate-rise tracking-[0.12em] [animation-delay:50ms] max-sm:text-[0.6875rem]">{hero.eyebrow}</Eyebrow>
 
-          <h1
-            id="hero-heading"
-            className="mt-stack animate-rise font-display text-[clamp(2.5rem,1.2rem+4.6vw,5.5rem)] leading-[0.95] font-extrabold tracking-[-0.045em] text-balance text-ink [animation-delay:120ms]"
-          >
-            {lineOne} {lineTwo} <span className="text-gradient">{lineThree}</span>
-          </h1>
+            <h1 id="hero-heading" aria-label={hero.headline} className="mt-stack-sm font-display text-ink">
+              {hero.headlineLines.map((line, index) => (
+                <span
+                  key={line.text}
+                  aria-hidden="true"
+                  className={cn(
+                    "block animate-rise whitespace-nowrap",
+                    line.size === "lead"
+                      ? "text-[min(5.6cqw,2.25rem)] leading-[1.15] font-bold tracking-[-0.02em] text-slate"
+                      : "text-[min(14.6cqw,6.75rem)] leading-[0.9] font-extrabold tracking-[-0.05em]",
+                    "accent" in line && line.accent && "text-gradient pb-[0.06em]",
+                  )}
+                  style={{ animationDelay: `${100 + index * 70}ms` }}
+                >
+                  {line.text}
+                </span>
+              ))}
+            </h1>
 
-          <p className="mt-stack max-w-[34rem] animate-rise text-body-lg text-slate [animation-delay:220ms]">{hero.body}</p>
+            <p className="mt-stack-sm max-w-[38rem] animate-rise text-body-lg text-slate [animation-delay:560ms]">{hero.body}</p>
 
-          <div className="mt-stack flex animate-rise flex-col gap-3 [animation-delay:320ms] lg:mt-stack-lg sm:flex-row sm:items-center">
-            <Button href={hero.primaryCta.href} size="lg" arrow className="max-sm:w-full">
-              {hero.primaryCta.label}
-            </Button>
-            <Button href={hero.secondaryCta.href} size="lg" variant="secondary" className="max-sm:w-full">
-              {hero.secondaryCta.label}
-            </Button>
+            <div className="mt-stack flex animate-rise flex-col gap-3 [animation-delay:640ms] sm:flex-row sm:items-center">
+              <Button href={hero.primaryCta.href} size="xl" arrow className="max-sm:w-full">
+                {hero.primaryCta.label}
+              </Button>
+              <Button href={hero.secondaryCta.href} size="xl" variant="secondary" className="max-sm:w-full">
+                {hero.secondaryCta.label}
+              </Button>
+            </div>
+
+            <p className="mt-stack flex animate-rise items-center gap-3 font-display text-body-sm font-semibold text-deep [animation-delay:720ms]">
+              <span aria-hidden="true" className="h-px w-10 bg-electric" />
+              {hero.tagline}
+            </p>
           </div>
+        </Container>
 
-          <p className="mt-stack flex animate-rise items-center gap-3 font-display text-body-sm font-semibold text-deep [animation-delay:420ms]">
-            <span aria-hidden="true" className="h-px w-10 bg-electric" />
-            {hero.tagline}
-          </p>
+        {/* The universe: in the flow below the text on smaller screens; the right half of the hero on desktop */}
+        <div className="relative z-10 px-gutter pb-stack-lg lg:absolute lg:inset-y-0 lg:right-0 lg:flex lg:w-[50%] lg:items-center lg:px-0 lg:pb-0 xl:w-[53%]">
+          <CreativeUniverse className="mx-auto w-full max-w-[28rem] sm:max-w-[34rem] md:max-w-[40rem] lg:max-w-[60rem]" />
         </div>
-
-        <div className="relative lg:col-span-4">
-          <SignalSignature className="mx-auto w-full max-w-[21rem] sm:max-w-[26rem] md:max-w-[30rem] lg:max-w-none" />
-        </div>
-      </Container>
+      </div>
 
       {/* Ticker of the six disciplines (decorative; the services are listed below) */}
-      <div aria-hidden="true" className="relative overflow-hidden border-t border-line bg-white/60 py-4 backdrop-blur-sm md:py-5">
+      <div aria-hidden="true" className="relative z-20 overflow-hidden border-t border-line bg-white/70 py-4 backdrop-blur-sm md:py-5">
         <div className="flex w-max animate-marquee [--marquee-duration:60s] hover:[animation-play-state:paused]">
           {[0, 1].map((copy) => (
             <div key={copy} className="flex shrink-0 items-center">

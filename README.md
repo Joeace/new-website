@@ -59,7 +59,7 @@ src/
     navigation/         Header, DesktopNavigation, ServicesMegaMenu, MobileNavigation,
                         NavigationLink, Logo
     sections/           PageIntro (shared inner-page opening)
-    home/               HomeHero, SignalSignature, HomeFinale, HomeAbout, AboutVisual, HomeServices, services/ServiceMotif, HomeWhyChoose, HomeApproach, HomeFeaturedWork, projects/ProjectArtwork, HomeAudiences, HomeTrust
+    home/               HomeHero, hero/CreativeUniverse, hero/Illustrations, HomeFinale, HomeAbout, AboutVisual, HomeServices, services/ServiceMotif, HomeWhyChoose, HomeApproach, HomeFeaturedWork, projects/ProjectArtwork, HomeAudiences, HomeTrust
     ui/                 Heading, Accent, Eyebrow, Text, Button, Card, Chip, Container,
                         Section, SectionHeading, Grid, Divider, MediaFrame, IconFrame
     cards/              Service, ServicePillar, Project, Feature, Portfolio, Testimonial, Industry, Article

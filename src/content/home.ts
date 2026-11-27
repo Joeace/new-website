@@ -2,7 +2,17 @@
 export const hero = {
   eyebrow: "Creative Thinking. Intelligent Technology. Measurable Growth.",
   /* Split into lines for controlled breaks on larger screens. */
-  headline: ["We Create Digital", "Experiences That Move", "Businesses Forward."],
+  headline: "We Create Digital Experiences That Move Businesses Forward.",
+  /* Expressive setting of the headline above: small lead-in lines alternate
+     with giant words; "accent" words take the electric gradient. */
+  headlineLines: [
+    { text: "We Create", size: "lead" },
+    { text: "Digital", size: "big" },
+    { text: "Experiences", size: "big", accent: true },
+    { text: "That Move", size: "lead" },
+    { text: "Businesses", size: "big" },
+    { text: "Forward.", size: "big", accent: true },
+  ],
   body: "We combine exceptional creativity, intelligent technology and strategic marketing to help brands capture attention, connect with customers and accelerate growth.",
   primaryCta: { label: "Explore Our Services", href: "/services/" },
   secondaryCta: { label: "Start a Project", href: "/contact/" },
