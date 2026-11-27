@@ -11,8 +11,7 @@ import { CreativeUniverse } from "./hero/CreativeUniverse";
  *
  * Desktop: an expressive headline (small lead-in lines alternating with
  * giant words, sized to the text column with container query units) beside
- * a 3D creative universe that fills the right half of the screen and bleeds
- * off its edge. Tablet and phone: headline first, then the universe below.
+ * a 3D creative universe in the right half of the centred content box. Tablet and phone: headline first, then the universe below.
  * Copy is server-rendered with CSS-only entrances, so it paints immediately.
  */
 export function HomeHero() {
@@ -27,7 +26,7 @@ export function HomeHero() {
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-grid opacity-50" />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -z-10 max-lg:inset-x-0 max-lg:bottom-0 max-lg:h-[60%] lg:inset-y-0 lg:right-0 lg:w-[62%] bg-[radial-gradient(60%_55%_at_60%_50%,rgb(47_128_237/0.16),transparent_70%),linear-gradient(180deg,transparent,rgb(244_247_251/0.9))]"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(70%_45%_at_50%_75%,rgb(47_128_237/0.14),transparent_70%)] lg:bg-[radial-gradient(38%_60%_at_70%_50%,rgb(47_128_237/0.15),transparent_72%)]"
       />
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-40 bg-linear-to-b from-transparent to-ice/80" />
 
@@ -75,9 +74,15 @@ export function HomeHero() {
           </div>
         </Container>
 
-        {/* The universe: in the flow below the text on smaller screens; the right half of the hero on desktop */}
-        <div className="relative z-10 px-gutter pb-stack-lg lg:absolute lg:inset-y-0 lg:right-0 lg:flex lg:w-[50%] lg:items-center lg:px-0 lg:pb-0 xl:w-[53%]">
-          <CreativeUniverse className="mx-auto w-full max-w-[28rem] sm:max-w-[34rem] md:max-w-[40rem] lg:max-w-[60rem]" />
+        {/* The universe: in the flow below the text on smaller screens. On desktop it is
+            the right half of the same centred content box as the text, so the pair stays
+            balanced at every screen width instead of drifting to the viewport edge. */}
+        <div className="relative z-10 px-gutter pb-stack-lg lg:pointer-events-none lg:absolute lg:inset-0 lg:px-0 lg:pb-0">
+          <div className="lg:mx-auto lg:flex lg:h-full lg:max-w-content lg:items-center lg:justify-end lg:px-gutter">
+            <div className="lg:w-[52%] xl:w-[54%]">
+              <CreativeUniverse className="mx-auto w-full max-w-[28rem] sm:max-w-[34rem] md:max-w-[40rem] lg:max-w-none" />
+            </div>
+          </div>
         </div>
       </div>
 

@@ -19,9 +19,9 @@ export const hero = {
   tagline: "Ideas into influence. Content into growth.",
 } as const;
 
-/** "Get to know Mota" homepage section. */
+/** "Get to know Mota Content Media" homepage section. */
 export const about = {
-  eyebrow: "Get to Know Mota",
+  eyebrow: "Get to Know Mota Content Media",
   heading: { lead: "Creativity Meets Technology.", accent: "Strategy Drives Growth." },
   lead: "At Mota Content Media, we believe great ideas deserve more than attention\u2014they deserve to make an impact.",
   intro:
@@ -263,7 +263,7 @@ export const trust = {
     },
     {
       quote:
-        "We engaged them on a massive rebranding effort and they have been tremendous helping giving us the brand facelift we so badly needed and was due.",
+        "We engaged them on a massive rebranding effort and they have been tremendous in giving us the brand facelift we so badly needed and that was due.",
       organisation: "Globe Derivatives Exchange",
       context: "Rebranding client",
     },
