@@ -29,7 +29,7 @@ export function HomeAudiences() {
         {/* Compact ruled grid: 4 x 2 on tablets and wide screens; 2 x 4 on phones and small laptops */}
         <ul
           aria-label="Types of clients we work with"
-          className="grid scroll-reveal grid-cols-2 gap-px overflow-hidden rounded-lg bg-line ring-1 ring-line [--reveal-from:6%] [--reveal-to:30%] md:grid-cols-4 lg:col-span-7 lg:grid-cols-2 xl:grid-cols-4"
+          className="grid scroll-reveal grid-cols-2 gap-px overflow-hidden rounded-lg bg-line ring-1 ring-line [--reveal-offset:48px] md:grid-cols-4 lg:col-span-7 lg:grid-cols-2 xl:grid-cols-4"
         >
           {audiences.labels.map((label) => (
             <li

@@ -17,7 +17,7 @@ import { serviceHref, services } from "@/content/services";
  */
 export function HomeServices() {
   return (
-    <Section id="services" aria-labelledby="services-heading" tone="ice" spacing="lg" className="overflow-x-clip">
+    <Section id="services" aria-labelledby="services-heading" tone="ice" spacing="none" className="overflow-x-clip pt-section-sm pb-section">
       <Container>
         <SignalMark />
         <SectionHeading
@@ -46,7 +46,7 @@ export function HomeServices() {
               capabilitiesLabel={servicesSection.capabilitiesLabel}
               cue={servicesSection.cardCue}
               className="h-full scroll-reveal"
-              style={{ "--reveal-from": `${(index % 3) * 5}%`, "--reveal-to": `${24 + (index % 3) * 6}%` } as CSSProperties}
+              style={{ "--reveal-offset": `${((index % 3) * 5) * 8}px` } as CSSProperties}
             />
           ))}
         </Grid>

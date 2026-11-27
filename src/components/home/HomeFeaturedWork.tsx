@@ -46,7 +46,7 @@ const placement: Record<string, { card: string; media: string; layout?: "split" 
 /** "Selected creative work": six concept projects across the disciplines. */
 export function HomeFeaturedWork() {
   return (
-    <Section id="work" aria-labelledby="work-heading" spacing="lg" className="overflow-x-clip">
+    <Section id="work" aria-labelledby="work-heading" spacing="none" className="overflow-x-clip pt-section-sm pb-section">
       <Container>
         {/* Introduction */}
         <div className="grid gap-y-stack lg:grid-cols-12 lg:items-end lg:gap-x-8">
@@ -58,7 +58,7 @@ export function HomeFeaturedWork() {
               <Accent>{featuredWork.heading.accent}</Accent>
             </Heading>
           </div>
-          <div className="flex scroll-reveal flex-col gap-stack-sm [--reveal-from:6%] [--reveal-to:32%] lg:col-span-5">
+          <div className="flex scroll-reveal flex-col gap-stack-sm [--reveal-offset:48px] lg:col-span-5">
             {featuredWork.intro.map((paragraph) => (
               <Text key={paragraph}>{paragraph}</Text>
             ))}
@@ -79,7 +79,7 @@ export function HomeFeaturedWork() {
               <li
                 key={project.slug}
                 className={`scroll-reveal ${place.card}`}
-                style={{ "--reveal-from": `${(index % 3) * 4}%`, "--reveal-to": `${24 + (index % 3) * 5}%` } as CSSProperties}
+                style={{ "--reveal-offset": `${((index % 3) * 4) * 8}px` } as CSSProperties}
               >
                 <ProjectCard
                   artwork={artwork[project.slug]}

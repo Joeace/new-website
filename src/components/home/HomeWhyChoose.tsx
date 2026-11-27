@@ -32,7 +32,7 @@ const icons: LucideIcon[] = [BrainCircuit, PencilRuler, Target, HeartHandshake, 
  */
 export function HomeWhyChoose() {
   return (
-    <Section id="why-mota-content-media" aria-labelledby="why-heading" spacing="lg" className="overflow-x-clip">
+    <Section id="why-mota-content-media" aria-labelledby="why-heading" spacing="none" className="overflow-x-clip pt-section-sm pb-section">
       <Container>
         {/* 1. Introduction */}
         <div className="grid gap-y-stack-lg lg:grid-cols-12 lg:gap-x-8">
@@ -45,7 +45,7 @@ export function HomeWhyChoose() {
             <PillarsMotif labels={whyChoose.pillars} className="mt-stack-lg hidden md:flex" />
           </div>
 
-          <div className="scroll-reveal [--reveal-from:6%] [--reveal-to:32%] lg:col-span-6 lg:col-start-7 lg:pt-10">
+          <div className="scroll-reveal [--reveal-offset:48px] lg:col-span-6 lg:col-start-7 lg:pt-10">
             <p className="font-display text-h3 text-pretty text-ink">
               <span className="md:block">{whyChoose.statement.lead} </span>
               <Accent variant="solid">{whyChoose.statement.accent}</Accent>
@@ -61,7 +61,7 @@ export function HomeWhyChoose() {
         </div>
 
         {/* 2. Eight advantages */}
-        <ol className="mt-section-sm grid gap-px overflow-hidden rounded-xl bg-line ring-1 ring-line md:grid-cols-2 xl:grid-cols-4">
+        <ol className="mt-section-sm grid gap-px overflow-clip rounded-xl bg-line ring-1 ring-line md:grid-cols-2 xl:grid-cols-4">
           {whyChoose.advantages.map((advantage, index) => {
             const Icon = icons[index];
             const number = String(index + 1).padStart(2, "0");
@@ -71,8 +71,7 @@ export function HomeWhyChoose() {
                 className="group relative flex scroll-reveal flex-col bg-white p-card-sm transition-colors duration-(--duration-slow) ease-out-expo hover:bg-ice md:p-card xl:px-7"
                 style={
                   {
-                    "--reveal-from": `${(index % 4) * 4}%`,
-                    "--reveal-to": `${22 + (index % 4) * 5}%`,
+                    "--reveal-offset": `${(index % 4) * 32}px`,
                   } as CSSProperties
                 }
               >

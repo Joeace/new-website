@@ -12,7 +12,7 @@ import { AboutVisual } from "./AboutVisual";
  *
  * Editorial layout that mirrors the hero (visual on the left this time):
  *   phones/tablets: heading, introduction, visual, approach, CTAs
- *   desktop:        heading across the top; sticky visual on the left,
+ *   desktop:        heading across the top; visual centred on the left,
  *                   introduction and approach on the right
  * Entrance and drift use CSS scroll-driven animation (no JavaScript).
  */
@@ -23,7 +23,7 @@ export function HomeAbout() {
       aria-labelledby="about-heading"
       spacing="none"
       /* Shorter top padding: the hero already ends with its own breathing room. */
-      className="overflow-x-clip pt-section-sm pb-section-lg"
+      className="overflow-x-clip pt-section-sm pb-section"
     >
       <Container className="grid gap-y-stack-lg lg:grid-cols-12 lg:gap-x-8 lg:gap-y-0">
         {/* Heading */}
@@ -37,7 +37,7 @@ export function HomeAbout() {
         </header>
 
         {/* Introduction */}
-        <div className="scroll-reveal [--reveal-from:6%] [--reveal-to:32%] lg:col-span-6 lg:col-start-7 lg:row-start-2">
+        <div className="scroll-reveal [--reveal-offset:48px] lg:col-span-6 lg:col-start-7 lg:row-start-2">
           <p className="font-display text-h4 leading-snug font-semibold text-deep md:text-[1.375rem]">{about.lead}</p>
           <Text size="body-lg" className="mt-stack max-w-prose">
             {about.intro}
@@ -45,15 +45,15 @@ export function HomeAbout() {
         </div>
 
         {/* Visual composition */}
-        <div className="relative lg:col-span-5 lg:col-start-1 lg:row-span-2 lg:row-start-2">
-          <div className="scroll-reveal [--reveal-from:4%] [--reveal-to:36%] lg:sticky lg:top-[calc(var(--spacing-nav)+2rem)]">
+        <div className="relative lg:col-span-5 lg:col-start-1 lg:row-span-2 lg:row-start-2 lg:self-center">
+          <div className="scroll-reveal [--reveal-offset:32px]">
             <AboutVisual className="mx-auto max-w-[26rem] sm:max-w-[30rem] md:max-w-[34rem] lg:max-w-none" />
           </div>
         </div>
 
         {/* Approach, closing statement and actions */}
         <div className="lg:col-span-6 lg:col-start-7 lg:row-start-3 lg:pt-stack-lg">
-          <div className="scroll-reveal [--reveal-from:4%] [--reveal-to:30%]">
+          <div className="scroll-reveal [--reveal-offset:32px]">
             <div className="flex items-center gap-4">
               <h3 className="shrink-0 font-sans text-label text-interactive uppercase">{about.approachLabel}</h3>
               <span aria-hidden="true" className="h-px flex-1 bg-line" />
@@ -65,11 +65,11 @@ export function HomeAbout() {
             </div>
           </div>
 
-          <div className="mt-stack-lg scroll-reveal border-l-[3px] border-electric pl-6 [--reveal-from:6%] [--reveal-to:34%] md:pl-8">
+          <div className="mt-stack-lg scroll-reveal border-l-[3px] border-electric pl-6 [--reveal-offset:48px] md:pl-8">
             <p className="font-display text-h3 text-pretty text-ink">{about.closing}</p>
           </div>
 
-          <div className="mt-stack-lg flex scroll-reveal flex-col gap-3 [--reveal-from:8%] [--reveal-to:36%] sm:flex-row sm:items-center">
+          <div className="mt-stack-lg flex scroll-reveal flex-col gap-3 [--reveal-offset:64px] sm:flex-row sm:items-center">
             <Button href={about.primaryCta.href} size="lg" arrow className="max-sm:w-full">
               {about.primaryCta.label}
             </Button>

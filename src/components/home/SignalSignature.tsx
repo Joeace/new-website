@@ -177,6 +177,7 @@ function Chip({
     <motion.li
       style={
         {
+          /* Values are rounded so server and browser render identical strings (no hydration mismatch). */
           left: `calc(50% + ${Math.cos(rad).toFixed(4)} * var(--orbit))`,
           top: `calc(50% + ${Math.sin(rad).toFixed(4)} * var(--orbit))`,
           ...(enhanced ? { x: px, y: py } : {}),
@@ -184,7 +185,7 @@ function Chip({
       }
       className="absolute -translate-x-1/2 -translate-y-1/2"
     >
-      <div className="animate-emerge" style={{ animationDelay: `${0.45 + index * 0.08}s`, "--from-x": `${-Math.cos(rad) * 40}%`, "--from-y": `${-Math.sin(rad) * 40}%` } as CSSProperties}>
+      <div className="animate-emerge" style={{ animationDelay: `${(0.45 + index * 0.08).toFixed(2)}s`, "--from-x": `${(-Math.cos(rad) * 40).toFixed(2)}%`, "--from-y": `${(-Math.sin(rad) * 40).toFixed(2)}%` } as CSSProperties}>
         <div
           className="md:animate-float [&:has(a:focus-visible)]:[animation-play-state:paused] [&:has(a:hover)]:[animation-play-state:paused]"
           style={{ "--float-duration": `${7 + index * 0.7}s`, "--float-distance": "-7px", animationDelay: `${-index * 1.3}s` } as CSSProperties}

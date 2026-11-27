@@ -28,7 +28,7 @@ const stageAnchor = (id: string) => `approach-${id}`;
  */
 export function HomeApproach() {
   return (
-    <Section id="approach" aria-labelledby="approach-heading" tone="ice" spacing="lg" className="overflow-x-clip">
+    <Section id="approach" aria-labelledby="approach-heading" tone="ice" spacing="none" className="overflow-x-clip pt-section-sm pb-section">
       <Container>
         {/* 1. Introduction */}
         <div className="grid gap-y-stack lg:grid-cols-12 lg:items-end lg:gap-x-8">
@@ -40,7 +40,7 @@ export function HomeApproach() {
               <Accent>{approach.heading.accent}</Accent>
             </Heading>
           </div>
-          <div className="flex scroll-reveal flex-col gap-stack-sm [--reveal-from:6%] [--reveal-to:32%] lg:col-span-5 lg:col-start-8">
+          <div className="flex scroll-reveal flex-col gap-stack-sm [--reveal-offset:48px] lg:col-span-5 lg:col-start-8">
             {approach.intro.map((paragraph) => (
               <Text key={paragraph}>{paragraph}</Text>
             ))}

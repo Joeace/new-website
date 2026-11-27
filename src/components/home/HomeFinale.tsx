@@ -13,7 +13,7 @@ export function HomeFinale() {
   return (
     <section
       aria-labelledby="finale-heading"
-      className="relative isolate overflow-hidden bg-[linear-gradient(115deg,#123b70_0%,#1c6ad4_58%,#2f80ed_100%)] py-section text-white"
+      className="relative isolate overflow-clip bg-[linear-gradient(115deg,#123b70_0%,#1c6ad4_58%,#2f80ed_100%)] py-section text-white"
     >
       {/* The C arc, oversized, cropped by the right edge */}
       <svg
@@ -36,7 +36,7 @@ export function HomeFinale() {
         >
           {finale.statement}
         </h2>
-        <div className="mt-stack-lg flex scroll-reveal flex-col gap-stack-lg [--reveal-from:6%] [--reveal-to:30%] lg:flex-row lg:items-end lg:justify-between">
+        <div className="mt-stack-lg flex scroll-reveal flex-col gap-stack-lg [--reveal-offset:48px] lg:flex-row lg:items-end lg:justify-between">
           <p className="max-w-2xl text-body-lg text-white/90">{finale.body}</p>
           <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
             <Button href={finale.primaryCta.href} size="lg" variant="inverse" arrow className="max-sm:w-full">

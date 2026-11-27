@@ -48,7 +48,7 @@ export function HomeTrust() {
               <li
                 key={testimonial.organisation}
                 className="scroll-reveal"
-                style={{ "--reveal-from": `${4 + index * 5}%`, "--reveal-to": `${28 + index * 6}%` } as CSSProperties}
+                style={{ "--reveal-offset": `${(4 + index * 5) * 8}px` } as CSSProperties}
               >
                 <TestimonialCard
                   size="compact"

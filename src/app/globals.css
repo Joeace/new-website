@@ -398,14 +398,19 @@
  * everywhere else the content is simply shown in place.
  */
 
-/* Rises into view as the element enters the viewport.
-   Stagger with --reveal-from / --reveal-to (e.g. 10% / 34%). */
+/* Rises into view as the element enters the viewport. The animation runs over
+   a fixed scroll distance (240px) from the moment the element's top appears,
+   so content is always fully visible once it is on screen: in tall windows,
+   full-page captures, crawlers and at the very bottom of the page.
+   Stagger with --reveal-offset (e.g. 48px).
+   Ancestors must use overflow: clip rather than hidden: "hidden" makes them
+   scroll containers, and the view timeline would then track them instead. */
 @utility scroll-reveal {
   @media (prefers-reduced-motion: no-preference) {
     @supports (animation-timeline: view()) {
       animation: rise linear both;
       animation-timeline: view();
-      animation-range: entry var(--reveal-from, 0%) cover var(--reveal-to, 28%);
+      animation-range: entry var(--reveal-offset, 0px) entry calc(var(--reveal-offset, 0px) + 240px);
     }
   }
 }
@@ -442,6 +447,19 @@
       animation: grow-y linear both;
       animation-timeline: view();
       animation-range: cover 50vh cover calc(100% - 50vh);
+    }
+  }
+}
+
+/* Draws downwards over a fixed scroll distance once fully on screen (signal
+   marks). Viewport-independent, so it is always drawn in tall windows. */
+@utility scroll-draw {
+  transform-origin: top;
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation: grow-y linear both;
+      animation-timeline: view();
+      animation-range: entry 100% entry calc(100% + 200px);
     }
   }
 }

@@ -19,7 +19,7 @@ export function HomeHero() {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="relative isolate -mt-nav flex min-h-svh flex-col overflow-x-clip bg-white pt-nav"
+      className="relative isolate -mt-nav flex min-h-[min(100svh,60rem)] flex-col overflow-x-clip bg-white pt-nav"
     >
       {/* Atmosphere */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-glow" />
