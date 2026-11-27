@@ -261,13 +261,11 @@ export const trust = {
 } as const;
 
 /**
- * Homepage finale: the single closing call to action. Brings together the
- * approved closing lines that previously ended Services, Why Choose and
- * How We Work as separate panels.
+ * Homepage finale: the single closing call to action (approved copy, 14B).
  */
 export const finale = {
-  statement: "Every great project starts with a conversation.",
-  body: "Your ambitions deserve more than ordinary solutions. Tell us what you want to achieve and we\u2019ll help you identify the right creative and digital solutions to get started.",
-  primaryCta: { label: "Start a Conversation", href: "/contact/" },
+  statement: "Your Next Big Idea Deserves the Right Creative Partner.",
+  body: "Whether you\u2019re building a brand, creating compelling content or looking to strengthen your digital presence, Mota Content Media is ready to help you bring your vision to life.",
+  primaryCta: { label: "Start a Project", href: "/contact/" },
   secondaryCta: { label: "Create Your Service", href: "/create-your-service/" },
 } as const;

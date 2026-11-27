@@ -229,6 +229,14 @@
     }
   }
 
+  /* Movement only, never opacity: content stays readable in every frame,
+     in screenshots and in any browser state. */
+  @keyframes rise-in {
+    from {
+      transform: translateY(28px);
+    }
+  }
+
   @keyframes drift {
     from {
       transform: translateY(var(--drift, 24px));
@@ -398,17 +406,16 @@
  * everywhere else the content is simply shown in place.
  */
 
-/* Rises into view as the element enters the viewport. The animation runs over
-   a fixed scroll distance (240px) from the moment the element's top appears,
-   so content is always fully visible once it is on screen: in tall windows,
-   full-page captures, crawlers and at the very bottom of the page.
-   Stagger with --reveal-offset (e.g. 48px).
+/* Rises into place as the element enters the viewport. Movement only (no
+   fading), so content is fully visible at every moment, including in
+   scroll-and-stitch screenshots and while scrolling quickly. Runs over a fixed
+   240px after an element appears; stagger with --reveal-offset (e.g. 48px).
    Ancestors must use overflow: clip rather than hidden: "hidden" makes them
    scroll containers, and the view timeline would then track them instead. */
 @utility scroll-reveal {
   @media (prefers-reduced-motion: no-preference) {
     @supports (animation-timeline: view()) {
-      animation: rise linear both;
+      animation: rise-in var(--ease-out-expo) both;
       animation-timeline: view();
       animation-range: entry var(--reveal-offset, 0px) entry calc(var(--reveal-offset, 0px) + 240px);
     }
