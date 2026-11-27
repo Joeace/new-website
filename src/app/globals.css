@@ -12,6 +12,15 @@
  *   --container-content   -> max-w-content
  *   --shadow-soft         -> shadow-soft
  *
+ * Colour hierarchy: BLUE LEADS (deep and electric carry the major dark
+ * bands, buttons and interactive states), WHITE BALANCES (white and ice
+ * give breathing space and carry long reading), GOLD ELEVATES (champagne
+ * gold for accent words, labels, rules, icons and button details).
+ *
+ * Gold contrast: gold on deep 4.3 and on night 7.0 (large text, icons,
+ * rules); champagne on deep 6.7 and on night 10.9 (any text on dark);
+ * gold-ink on white 5.0 (the gold for text on light backgrounds).
+ *
  * Contrast against white (WCAG 2.2 AA needs 4.5:1 for normal text,
  * 3:1 for large text and UI components):
  *   midnight 15.6  deep 11.1  slate 7.2  muted 5.3  interactive 5.2
@@ -48,6 +57,17 @@
   --color-silver: #dce2ea;
   --color-ice: #f4f7fb;
   --color-midnight: #17243a;
+  /* Darkest brand blue: cinematic sections, hero overlay and footer. */
+  --color-night: #0a1730;
+
+  /* Signature accent: champagne gold (see contrast notes above). */
+  --color-gold: #c49a50;
+  --color-gold-hover: #d2ab66;
+  --color-champagne: #d8c6a4;
+  --color-gold-ink: #8a6a2f;
+  /* Supporting warm neutrals, used sparingly. */
+  --color-charcoal: #29251f;
+  --color-sand: #b9a991;
 
   /* Interactive blue: electric blue deepened just enough for white
      text and small blue text to pass AA (5.2:1). Used for buttons and links. */
@@ -68,33 +88,34 @@
   /* Typography                                                          */
   /* ------------------------------------------------------------------ */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-manrope), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-playfair), ui-serif, Georgia, "Times New Roman", serif;
+  --font-ui: var(--font-manrope), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
-  /* Headings (Manrope): fluid between 360px and 1440px viewports */
-  --text-display: clamp(2.75rem, 1.7rem + 4.6vw, 5.5rem);
+  /* Headings (Playfair Display): fluid between 360px and 1440px viewports */
+  --text-display: clamp(2.75rem, 1.6rem + 5vw, 6rem);
   --text-display--line-height: 1.02;
-  --text-display--letter-spacing: -0.04em;
-  --text-display--font-weight: 800;
+  --text-display--letter-spacing: -0.02em;
+  --text-display--font-weight: 500;
 
-  --text-h1: clamp(2.25rem, 1.6rem + 2.9vw, 4rem);
+  --text-h1: clamp(2.25rem, 1.55rem + 3.1vw, 4.25rem);
   --text-h1--line-height: 1.06;
-  --text-h1--letter-spacing: -0.035em;
-  --text-h1--font-weight: 800;
+  --text-h1--letter-spacing: -0.018em;
+  --text-h1--font-weight: 500;
 
-  --text-h2: clamp(1.875rem, 1.45rem + 1.9vw, 3rem);
+  --text-h2: clamp(1.875rem, 1.4rem + 2.1vw, 3.25rem);
   --text-h2--line-height: 1.1;
-  --text-h2--letter-spacing: -0.03em;
-  --text-h2--font-weight: 700;
+  --text-h2--letter-spacing: -0.015em;
+  --text-h2--font-weight: 500;
 
-  --text-h3: clamp(1.375rem, 1.24rem + 0.6vw, 1.75rem);
-  --text-h3--line-height: 1.22;
-  --text-h3--letter-spacing: -0.02em;
-  --text-h3--font-weight: 700;
+  --text-h3: clamp(1.375rem, 1.22rem + 0.7vw, 1.875rem);
+  --text-h3--line-height: 1.2;
+  --text-h3--letter-spacing: -0.01em;
+  --text-h3--font-weight: 600;
 
-  --text-h4: clamp(1.125rem, 1.08rem + 0.2vw, 1.25rem);
-  --text-h4--line-height: 1.35;
-  --text-h4--letter-spacing: -0.01em;
-  --text-h4--font-weight: 700;
+  --text-h4: clamp(1.1875rem, 1.12rem + 0.3vw, 1.375rem);
+  --text-h4--line-height: 1.3;
+  --text-h4--letter-spacing: -0.005em;
+  --text-h4--font-weight: 600;
 
   /* Body (Inter) */
   --text-body-lg: clamp(1.125rem, 1.08rem + 0.25vw, 1.3125rem);
@@ -328,7 +349,7 @@
   }
 
   ::selection {
-    @apply bg-electric text-white;
+    @apply bg-gold text-night;
   }
 
   :focus-visible {
@@ -359,8 +380,21 @@
 /* Visual utilities                                                            */
 /* ========================================================================== */
 
-/* Accent text: a deep-to-electric gradient for selected words in headings.
-   For large text only; small accent text should use text-deep. */
+/* Accent words in headings: the serif italic in gold. gold-ink on light
+   backgrounds (5.0:1 on white), champagne gold on dark ones. */
+@utility text-accent {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-gold-ink);
+}
+
+@utility text-accent-inverse {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-gold);
+}
+
+/* Legacy blue gradient accent (inner pages). */
 @utility text-gradient {
   background-image: linear-gradient(100deg, var(--color-deep) 0%, var(--color-electric) 100%);
   -webkit-background-clip: text;

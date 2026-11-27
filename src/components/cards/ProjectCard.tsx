@@ -1,5 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
-import { Card, CardCue, CardDescription, CardTitle, Chip, cardFocusRing } from "@/components/ui/Card";
+import { Card, CardCue, CardDescription, CardTitle, cardFocusRing } from "@/components/ui/Card";
 import { cn } from "@/lib/utils";
 
 type ProjectCardProps = {
@@ -17,6 +17,10 @@ type ProjectCardProps = {
   /** Aspect-ratio classes for the media frame, per breakpoint. */
   mediaClassName?: string;
   headingLevel?: "h3" | "h4";
+  /** Set when the media holds its own control (e.g. a play button): lifts it above the card link. */
+  interactiveMedia?: boolean;
+  /** "inverse" for night and deep blue sections. */
+  tone?: "default" | "inverse";
   className?: string;
   style?: CSSProperties;
 };
@@ -37,10 +41,13 @@ export function ProjectCard({
   layout = "stacked",
   mediaClassName = "aspect-[4/3]",
   headingLevel = "h3",
+  tone = "default",
+  interactiveMedia = false,
   className,
   style,
 }: ProjectCardProps) {
   const split = layout === "split";
+  const inverse = tone === "inverse";
 
   return (
     <Card
@@ -51,7 +58,9 @@ export function ProjectCard({
     >
       <div
         className={cn(
-          "relative isolate overflow-hidden rounded-xl bg-ice shadow-soft ring-1 ring-line/70 transition-[box-shadow,translate] duration-(--duration-slow) ease-out-expo group-hover:-translate-y-1 group-hover:shadow-lifted",
+          "relative isolate overflow-hidden rounded-xl shadow-soft transition-[box-shadow,translate] duration-(--duration-slow) ease-out-expo group-hover:-translate-y-1 group-hover:shadow-lifted",
+          inverse ? "bg-midnight ring-1 ring-white/10" : "bg-ice ring-1 ring-line/70",
+          interactiveMedia && "z-[2]",
           mediaClassName,
           split && "lg:col-span-8",
         )}
@@ -61,24 +70,31 @@ export function ProjectCard({
           {artwork}
         </div>
         {badge && (
-          <Chip tone="glass" className="absolute top-4 left-4 z-10">
+          <span className="pointer-events-none absolute top-4 left-4 z-30 inline-flex h-7 items-center rounded-pill bg-night/80 px-3 text-body-sm font-medium text-champagne ring-1 ring-gold/50 backdrop-blur-md">
             {badge}
-          </Chip>
+          </span>
         )}
       </div>
 
       <div className={cn("flex flex-col pt-5", split && "lg:col-span-4 lg:pt-0")}>
-        <p className="text-label text-interactive uppercase">{category}</p>
+        <p className={cn("text-label uppercase", inverse ? "text-gold" : "text-gold-ink")}>{category}</p>
         <CardTitle
           as={headingLevel}
           href={href}
           size={split ? "h3" : "h4"}
-          className="mt-2 text-deep transition-colors duration-(--duration-base) group-hover:text-interactive"
+          className={cn(
+            "mt-2 transition-colors duration-(--duration-base)",
+            inverse ? "text-white group-hover:text-champagne" : "text-deep group-hover:text-interactive",
+          )}
         >
           {title}
         </CardTitle>
-        <CardDescription className="mt-2 max-w-prose">{description}</CardDescription>
-        <div className="mt-stack-sm">
+        {inverse ? (
+          <p className="mt-2 max-w-prose text-body-sm text-white/75">{description}</p>
+        ) : (
+          <CardDescription className="mt-2 max-w-prose">{description}</CardDescription>
+        )}
+        <div className={cn("mt-stack-sm", inverse && "[&>span]:text-gold")}>
           <CardCue>{cue}</CardCue>
         </div>
       </div>

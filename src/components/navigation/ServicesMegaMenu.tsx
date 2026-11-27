@@ -51,7 +51,7 @@ export const ServicesMegaMenu = forwardRef<HTMLDivElement, ServicesMegaMenuProps
                     <Icon className="size-icon" strokeWidth={1.75} />
                   </span>
                   <span className="flex min-w-0 flex-col gap-1">
-                    <span className="font-display text-[0.9375rem] leading-snug font-bold text-ink transition-colors duration-(--duration-fast) group-hover/item:text-interactive">
+                    <span className="font-ui text-[0.9375rem] leading-snug font-bold text-ink transition-colors duration-(--duration-fast) group-hover/item:text-interactive">
                       {title}
                     </span>
                     <span className="text-body-sm text-slate">{description}</span>

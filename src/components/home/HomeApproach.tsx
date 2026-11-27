@@ -2,9 +2,10 @@ import { ChartLine, Check, Compass, PenTool, Rocket, Search, type LucideIcon } f
 import { Container } from "@/components/ui/Container";
 import { Accent, Eyebrow, Heading } from "@/components/ui/Heading";
 import { Section } from "@/components/ui/Section";
-import { SignalMark } from "@/components/ui/SignalMark";
 import { Text } from "@/components/ui/Text";
 import { approach } from "@/content/home";
+import { textures } from "@/content/media";
+import { MediaTexture } from "@/components/media/MediaTexture";
 
 /* Discover, Strategise, Create, Execute, Measure & Optimise */
 const icons: LucideIcon[] = [Search, Compass, PenTool, Rocket, ChartLine];
@@ -29,11 +30,11 @@ const stageAnchor = (id: string) => `approach-${id}`;
 export function HomeApproach() {
   return (
     <Section id="approach" aria-labelledby="approach-heading" tone="ice" spacing="none" className="overflow-x-clip pt-section-sm pb-section">
+      <MediaTexture src={textures.wireframe} className="inset-x-0 top-0 h-[40rem] [mask-image:linear-gradient(180deg,#000_20%,transparent)]" />
       <Container>
         {/* 1. Introduction */}
         <div className="grid gap-y-stack lg:grid-cols-12 lg:items-end lg:gap-x-8">
           <div className="scroll-reveal lg:col-span-7">
-            <SignalMark />
             <Eyebrow rule>{approach.eyebrow}</Eyebrow>
             <Heading as="h2" size="h1" id="approach-heading" className="mt-stack">
               <span className="block">{approach.heading.lead}</span>
@@ -51,7 +52,7 @@ export function HomeApproach() {
         <nav aria-label="Process stages" className="mt-section-sm hidden scroll-reveal md:block">
           <ol className="relative grid grid-cols-5">
             <span aria-hidden="true" className="absolute top-7 right-[10%] left-[10%] h-px bg-line-strong/50" />
-            <span aria-hidden="true" className="absolute top-7 right-[10%] left-[10%] h-px scroll-grow-x bg-electric" />
+            <span aria-hidden="true" className="absolute top-7 right-[10%] left-[10%] h-px scroll-grow-x bg-gold" />
             {approach.stages.map((stage, index) => {
               const Icon = icons[index];
               return (
@@ -65,7 +66,7 @@ export function HomeApproach() {
                     </span>
                     <span className="flex flex-col">
                       <span className="text-label text-muted">{stageNumber(index)}</span>
-                      <span className="font-display text-body font-bold text-deep transition-colors group-hover/step:text-interactive">
+                      <span className="font-display text-body-lg font-semibold text-deep transition-colors group-hover/step:text-interactive">
                         {stage.name}
                       </span>
                     </span>
@@ -80,7 +81,7 @@ export function HomeApproach() {
         <ol className="relative mt-section-sm md:mt-stack-lg">
           {/* Connecting line through the node centres, with a scroll-driven fill */}
           <span aria-hidden="true" className="absolute top-5 bottom-5 left-5 w-px -translate-x-1/2 bg-line-strong/50 sm:top-7 sm:bottom-7 sm:left-7" />
-          <span aria-hidden="true" className="absolute top-5 bottom-5 left-5 w-0.5 -translate-x-1/2 scroll-grow-y rounded-pill bg-electric sm:top-7 sm:bottom-7 sm:left-7" />
+          <span aria-hidden="true" className="absolute top-5 bottom-5 left-5 w-0.5 -translate-x-1/2 scroll-grow-y rounded-pill bg-gold sm:top-7 sm:bottom-7 sm:left-7" />
 
           {approach.stages.map((stage, index) => {
             const Icon = icons[index];
@@ -102,9 +103,9 @@ export function HomeApproach() {
                 <div className="scroll-reveal rounded-xl bg-white p-card-sm shadow-soft ring-1 ring-line/70 transition-[translate,box-shadow] duration-(--duration-slow) ease-out-expo hover:-translate-y-0.5 hover:shadow-lifted md:p-card">
                   <div className="grid gap-x-8 gap-y-stack md:grid-cols-2 lg:grid-cols-12">
                     <div className="md:col-span-2 lg:col-span-4">
-                      <p className="text-label text-interactive uppercase">Stage {number}</p>
+                      <p className="text-label text-gold-ink uppercase">Stage {number}</p>
                       <h3 className="mt-2 font-display text-h3 text-deep">{stage.name}</h3>
-                      <p className="mt-1.5 font-display text-body-lg leading-snug font-semibold text-ink">{stage.tagline}</p>
+                      <p className="mt-1.5 font-display text-body-lg leading-snug text-ink italic">{stage.tagline}</p>
                       {scopeNote && (
                         <p className="mt-3 inline-flex rounded-pill bg-mist px-3 py-1 text-body-sm font-medium text-deep">
                           {scopeNote}
@@ -119,7 +120,7 @@ export function HomeApproach() {
                       <ul className="mt-3 flex flex-col gap-2">
                         {stage.activities.map((activity) => (
                           <li key={activity} className="flex items-start gap-2.5 text-body-sm text-ink">
-                            <Check aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-electric" strokeWidth={2.5} />
+                            <Check aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-gold" strokeWidth={2.5} />
                             {activity}
                           </li>
                         ))}

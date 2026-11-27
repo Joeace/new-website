@@ -11,7 +11,7 @@ Website for Mota Content Media, a creative technology and digital marketing agen
 | Framework | Next.js 16.4.6 (App Router), React 19, TypeScript |
 | Styling | Tailwind CSS v4, with design tokens in `src/app/globals.css` |
 | Motion | Motion for React (`motion/react`) |
-| Fonts | Manrope (headings) and Inter (body), self-hosted at build time via `next/font` |
+| Fonts | Playfair Display (headings), Manrope (interface) and Inter (body), self-hosted at build time via `next/font` |
 | Hosting | Cloudflare, served as a static export from `out/` |
 
 Libraries are added only when a feature needs them. GSAP, Three.js / React Three Fiber and Lucide are planned but not yet installed.
@@ -59,15 +59,17 @@ src/
     navigation/         Header, DesktopNavigation, ServicesMegaMenu, MobileNavigation,
                         NavigationLink, Logo
     sections/           PageIntro (shared inner-page opening)
-    home/               HomeHero, hero/CreativeUniverse, hero/Illustrations, HomeFinale, HomeAbout, AboutVisual, HomeServices, services/ServiceMotif, HomeWhyChoose, HomeApproach, HomeFeaturedWork, projects/ProjectArtwork, HomeAudiences, HomeTrust
+    home/               HomeHero, hero/HeroVideo, HomeAbout, HomeServices, HomeWhyChoose, HomeApproach, HomeFeaturedWork, projects/ProjectVisuals, HomeAudiences, HomeTrust, HomeFinale
+    media/              Photo (responsive WebP), MediaTexture (background photography), VideoPreview (click to play)
     ui/                 Heading, Accent, Eyebrow, Text, Button, Card, Chip, Container,
                         Section, SectionHeading, Grid, Divider, MediaFrame, IconFrame
-    cards/              Service, ServicePillar, Project, Feature, Portfolio, Testimonial, Industry, Article
+    cards/              Service, Project, Feature, Portfolio, Testimonial, Industry, Article
     motion/             MotionProvider, Reveal
-  content/              Typed site content: site.ts, navigation.ts, services.ts
+  content/              Typed site content: site.ts, navigation.ts, services.ts, home.ts, media.ts (photo, texture and video registry)
   lib/                  Fonts, motion tokens for JS, utilities
 public/
   brand/                mcm-logo-source.png (original, unaltered) and mcm-logo.webp (web copy)
+  media/                photos/, textures/, video/ and CREDITS.md (sources and licences)
 ```
 
 ## Routes
@@ -92,6 +94,11 @@ All tokens live in `src/app/globals.css` and become Tailwind utilities. Motion t
 
 | Token | Hex | Use | Contrast on white |
 | --- | --- | --- | --- |
+| `night` | `#0A1730` | Hero, portfolio and footer bands | |
+| `gold` | `#C49A50` | Signature accent on dark: accent words, rules, gold buttons | 2.6 (4.3 on deep) |
+| `champagne` | `#D8C6A4` | Accent text on dark | 10.9 on night |
+| `gold-ink` | `#8A6A2F` | Gold for text on light backgrounds (eyebrows, accent words) | 5.0 |
+| `charcoal` / `sand` | `#29251F` / `#B9A991` | Supporting warm neutrals (gold button text) | |
 | `white` | `#FFFFFF` | Dominant background | |
 | `ice` / `surface` | `#F4F7FB` | Alternate sections, card fills | |
 | `silver` / `line` | `#DCE2EA` | Borders, dividers (decorative) | 1.3 |
@@ -108,15 +115,15 @@ All tokens live in `src/app/globals.css` and become Tailwind utilities. Motion t
 
 ### Typography
 
-Headings use Manrope (`font-display`); everything else uses Inter (`font-sans`). Sizes are fluid between 360px and 1440px viewports.
+Headings use Playfair Display (`font-display`), with its italic in gold for accent words (`Accent`, `text-accent`). Manrope (`font-ui`) sets the logo wordmark, navigation and numerals; everything else uses Inter (`font-sans`). Sizes are fluid between 360px and 1440px viewports.
 
 | Utility | Phone → desktop | Use |
 | --- | --- | --- |
-| `text-display` | 44 → 88px, 800 | Hero statements |
-| `text-h1` | 36 → 64px, 800 | Page titles |
-| `text-h2` | 30 → 48px, 700 | Section titles |
-| `text-h3` | 22 → 28px, 700 | Sub-sections, large cards |
-| `text-h4` | 18 → 20px, 700 | Cards and lists |
+| `text-display` | 44 → 96px, 500 | Hero statements |
+| `text-h1` | 36 → 68px, 500 | Page titles |
+| `text-h2` | 30 → 52px, 500 | Section titles |
+| `text-h3` | 22 → 30px, 600 | Sub-sections, large cards |
+| `text-h4` | 19 → 22px, 600 | Cards and lists |
 | `text-body-lg` | 18 → 21px | Introductions |
 | `text-body` | 16 → 17px | Body copy |
 | `text-body-sm` | 14px | Captions, meta, card text |
@@ -148,9 +155,13 @@ CSS transitions handle hover and focus: 150ms colour, 250ms buttons and links, 5
 
 Scroll-linked effects that need no JavaScript use the `scroll-reveal`, `scroll-drift`, `scroll-grow-x`, `scroll-grow-y` and `scroll-spotlight` utilities (CSS scroll-driven animations). Browsers without support, and visitors who prefer reduced motion, see the content in its final position.
 
-## Art direction: "The Signal"
+## Art direction: premium creative media studio
 
-The blue C of the MCM monogram is the site's signature. In the hero it becomes an electric C-shaped arc (open on the right, like the letter) with a travelling spark around the logo disc; a signal line leaves the bottom of the C, and `SignalMark` draws a short electric line into each chapter's heading as it reaches mid-screen. The homepage ends in one electric finale (`HomeFinale`) instead of per-section call-to-action panels. Stage 1 (identity) is in place; stages 2 (services index and work showcase in midnight and deep-blue chapters) and 3 (story sections, merged Why Choose and How We Work) follow.
+Blue leads, white balances, gold elevates. Deep and night blue carry the hero, Why Choose, portfolio, finale and footer; white and ice carry reading; champagne gold marks accent words, rules, numerals and the signature call to action. The logo is never altered.
+
+The site is human-centred: a cinematic hero showreel of real production work (`HeroVideo`, poster first, skipped for reduced motion and Data Saver, paused off-screen), photography in every service card and in About, Why Choose and the finale, and large monochrome media photographs as section textures (`MediaTexture`, 6–12%). Concept projects pair real imagery with deliverable mockups and two click-to-play video previews.
+
+All media is temporary, local and replaceable: see `src/content/media.ts` and `public/media/CREDITS.md`. The photographs are illustrative and must never be presented as Mota Content Media staff, clients or work.
 
 ## Content rules
 

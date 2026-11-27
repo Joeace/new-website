@@ -38,7 +38,7 @@ export function Logo({ showName = true, nameClassName, className, onClick, prelo
         <span
           aria-hidden="true"
           className={cn(
-            "font-display text-[0.9375rem] leading-tight font-bold tracking-[-0.01em] whitespace-nowrap text-deep",
+            "font-ui text-[0.9375rem] leading-tight font-bold tracking-[-0.01em] whitespace-nowrap text-deep",
             nameClassName,
           )}
         >

@@ -81,7 +81,7 @@ export function MobileNavigation({ open, onOpenChange }: MobileNavigationProps) 
 
   const linkClasses = (active: boolean) =>
     cn(
-      "flex min-h-14 w-full items-center justify-between rounded-md px-4 font-display text-h4 transition-colors duration-(--duration-fast)",
+      "flex min-h-14 w-full items-center justify-between rounded-md px-4 font-ui text-h4 transition-colors duration-(--duration-fast)",
       active ? "bg-ice text-deep" : "text-ink hover:bg-ice hover:text-interactive",
     );
 

@@ -1,30 +1,12 @@
 import { Info } from "lucide-react";
-import type { CSSProperties, ReactNode } from "react";
+import type { CSSProperties } from "react";
 import { ProjectCard } from "@/components/cards/ProjectCard";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Accent, Eyebrow, Heading } from "@/components/ui/Heading";
 import { Section } from "@/components/ui/Section";
-import { SignalMark } from "@/components/ui/SignalMark";
-import { Text } from "@/components/ui/Text";
 import { featuredWork } from "@/content/home";
-import {
-  AudioSessionArt,
-  BrandIdentityArt,
-  EditorialArt,
-  GrowthDashboardArt,
-  SocialCampaignArt,
-  VideoCampaignArt,
-} from "./projects/ProjectArtwork";
-
-const artwork: Record<string, ReactNode> = {
-  "brand-identity": <BrandIdentityArt />,
-  "video-campaign": <VideoCampaignArt />,
-  "editorial-content": <EditorialArt />,
-  "social-media-campaign": <SocialCampaignArt />,
-  "audio-production": <AudioSessionArt />,
-  "digital-marketing": <GrowthDashboardArt />,
-};
+import { projectVisuals } from "./projects/ProjectVisuals";
 
 /*
  * Art-directed grid (12 columns on desktop):
@@ -43,31 +25,38 @@ const placement: Record<string, { card: string; media: string; layout?: "split" 
   "digital-marketing": { card: "md:col-span-2 lg:col-span-12", media: "aspect-[4/3] md:aspect-[16/9]", layout: "split" },
 };
 
-/** "Selected creative work": six concept projects across the disciplines. */
+/**
+ * "Selected creative work": six concept projects across the disciplines, on
+ * the night blue band. Every project has finished visuals: photography or a
+ * click-to-play video preview, layered with a deliverable mockup. All are
+ * labelled "Concept Project", with a disclosure above the grid.
+ */
 export function HomeFeaturedWork() {
   return (
-    <Section id="work" aria-labelledby="work-heading" spacing="none" className="overflow-x-clip pt-section-sm pb-section">
+    <Section id="work" aria-labelledby="work-heading" tone="night" spacing="none" className="overflow-x-clip pt-section-sm pb-section">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(50%_35%_at_10%_0%,rgb(47_128_237/0.22),transparent_70%),radial-gradient(40%_30%_at_95%_40%,rgb(196_154_80/0.12),transparent_70%)]" />
       <Container>
         {/* Introduction */}
         <div className="grid gap-y-stack lg:grid-cols-12 lg:items-end lg:gap-x-8">
           <div className="scroll-reveal lg:col-span-7">
-            <SignalMark />
-            <Eyebrow rule>{featuredWork.eyebrow}</Eyebrow>
-            <Heading as="h2" size="h1" id="work-heading" className="mt-stack">
+            <Eyebrow rule tone="inverse">{featuredWork.eyebrow}</Eyebrow>
+            <Heading as="h2" size="h1" id="work-heading" tone="inverse" className="mt-stack">
               <span className="block">{featuredWork.heading.lead}</span>
-              <Accent>{featuredWork.heading.accent}</Accent>
+              <Accent variant="gold-inverse">{featuredWork.heading.accent}</Accent>
             </Heading>
           </div>
           <div className="flex scroll-reveal flex-col gap-stack-sm [--reveal-offset:48px] lg:col-span-5">
             {featuredWork.intro.map((paragraph) => (
-              <Text key={paragraph}>{paragraph}</Text>
+              <p key={paragraph} className="text-body text-white/80">
+                {paragraph}
+              </p>
             ))}
           </div>
         </div>
 
         {/* Concept disclosure, visible to everyone */}
-        <p className="mt-stack-lg flex scroll-reveal items-start gap-3 rounded-lg bg-ice px-4 py-3 text-body-sm text-slate ring-1 ring-line md:items-center">
-          <Info aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-interactive md:mt-0" strokeWidth={2} />
+        <p className="mt-stack-lg flex scroll-reveal items-start gap-3 rounded-lg bg-white/5 px-4 py-3 text-body-sm text-white/80 ring-1 ring-gold/30 md:items-center">
+          <Info aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-gold md:mt-0" strokeWidth={2} />
           {featuredWork.conceptNote}
         </p>
 
@@ -82,7 +71,9 @@ export function HomeFeaturedWork() {
                 style={{ "--reveal-offset": `${((index % 3) * 4) * 8}px` } as CSSProperties}
               >
                 <ProjectCard
-                  artwork={artwork[project.slug]}
+                  artwork={projectVisuals[project.slug]}
+                  tone="inverse"
+                  interactiveMedia={project.slug === "video-campaign" || project.slug === "audio-production"}
                   category={project.category}
                   title={project.title}
                   description={project.description}
@@ -98,7 +89,7 @@ export function HomeFeaturedWork() {
         </ul>
 
         <div className="mt-section-sm flex scroll-reveal justify-center">
-          <Button href={featuredWork.cta.href} size="lg" variant="secondary" arrow className="max-sm:w-full">
+          <Button href={featuredWork.cta.href} size="lg" variant="gold" arrow className="max-sm:w-full">
             {featuredWork.cta.label}
           </Button>
         </div>

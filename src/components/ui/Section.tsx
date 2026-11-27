@@ -12,6 +12,9 @@ const tones = {
   fade: "bg-fade text-ink",
   glow: "bg-white bg-glow text-ink",
   midnight: "bg-midnight text-white",
+  /* Blue-led feature bands: deep brand blue, and the darkest night blue. */
+  deep: "bg-deep text-white",
+  night: "bg-night text-white",
 } as const;
 
 const spacings = {

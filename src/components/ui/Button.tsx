@@ -24,6 +24,13 @@ const variants = {
     "hover:-translate-y-px hover:border-interactive-hover hover:bg-mist hover:text-interactive-hover " +
     "active:translate-y-0 active:border-interactive-active active:text-interactive-active " +
     "disabled:translate-y-0 disabled:border-silver disabled:bg-white disabled:text-muted",
+  /* Champagne gold with charcoal text (5.9:1): the signature call to action
+     on photography and dark blue. */
+  gold:
+    "rounded-pill bg-gold text-charcoal font-semibold shadow-soft " +
+    "hover:-translate-y-px hover:bg-gold-hover hover:shadow-[0_10px_28px_-10px_rgb(196_154_80/0.7)] " +
+    "active:translate-y-0 active:bg-champagne active:shadow-none " +
+    "disabled:translate-y-0 disabled:bg-sand disabled:text-charcoal/70 disabled:shadow-none",
   /* For dark surfaces such as deep blue panels and midnight sections. */
   inverse:
     "rounded-pill bg-white text-deep shadow-soft " +

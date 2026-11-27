@@ -1,17 +1,13 @@
 /** Homepage copy, kept exactly as approved. */
 export const hero = {
   eyebrow: "Creative Thinking. Intelligent Technology. Measurable Growth.",
-  /* Split into lines for controlled breaks on larger screens. */
   headline: "We Create Digital Experiences That Move Businesses Forward.",
-  /* Expressive setting of the headline above: small lead-in lines alternate
-     with giant words; "accent" words take the electric gradient. */
-  headlineLines: [
-    { text: "We Create", size: "lead" },
-    { text: "Digital", size: "big" },
-    { text: "Experiences", size: "big", accent: true },
-    { text: "That Move", size: "lead" },
-    { text: "Businesses", size: "big" },
-    { text: "Forward.", size: "big", accent: true },
+  /* The headline as set: accent parts take the gold serif italic. */
+  headlineParts: [
+    { text: "We Create Digital " },
+    { text: "Experiences", accent: true },
+    { text: " That Move Businesses " },
+    { text: "Forward.", accent: true },
   ],
   body: "We combine exceptional creativity, intelligent technology and strategic marketing to help brands capture attention, connect with customers and accelerate growth.",
   primaryCta: { label: "Explore Our Services", href: "/services/" },
@@ -275,6 +271,8 @@ export const trust = {
  */
 export const finale = {
   statement: "Your Next Big Idea Deserves the Right Creative Partner.",
+  /* The statement as set: the accent part takes the gold serif italic. */
+  statementParts: [{ text: "Your Next Big Idea Deserves " }, { text: "the Right Creative Partner.", accent: true }],
   body: "Whether you\u2019re building a brand, creating compelling content or looking to strengthen your digital presence, Mota Content Media is ready to help you bring your vision to life.",
   primaryCta: { label: "Start a Project", href: "/contact/" },
   secondaryCta: { label: "Create Your Service", href: "/create-your-service/" },

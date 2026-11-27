@@ -5,20 +5,22 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { footer } from "@/content/navigation";
 import { serviceHref, services } from "@/content/services";
+import { MediaTexture } from "@/components/media/MediaTexture";
+import { textures } from "@/content/media";
 import { site } from "@/content/site";
 import { CopyrightYear } from "./CopyrightYear";
 import { SocialIcon } from "./SocialIcon";
 
-/* Links: silver at rest, white on hover with a short electric underline. */
+/* Links: silver at rest, white on hover with a short gold underline. */
 const linkClass =
   "relative inline-flex rounded-xs py-1 text-body-sm text-silver transition-colors duration-(--duration-fast) hover:text-white " +
-  "after:absolute after:bottom-0.5 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-electric after:transition-transform after:duration-(--duration-base) after:ease-out-expo hover:after:scale-x-100";
+  "after:absolute after:bottom-0.5 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-gold after:transition-transform after:duration-(--duration-base) after:ease-out-expo hover:after:scale-x-100";
 
 const headingClass = "text-label text-white uppercase";
 
 /**
  * Global footer, rendered once in the root layout.
- * Midnight background, white headings, silver secondary text, electric accents.
+ * Night blue background, white headings, silver secondary text, gold accents.
  * The supplied logo sits on a white nameplate so it appears exactly as
  * provided. Phone, location and social profiles are PLACEHOLDERS (see
  * content/site.ts and content/navigation.ts) until the real details exist.
@@ -28,15 +30,16 @@ export function Footer() {
   const buildYear = new Date().getFullYear();
 
   return (
-    <footer aria-labelledby="footer-heading" className="relative isolate overflow-hidden bg-midnight text-white">
+    <footer aria-labelledby="footer-heading" className="relative isolate overflow-hidden border-t border-gold/40 bg-night text-white">
       <h2 id="footer-heading" className="sr-only">
         {site.name}: site information
       </h2>
-      {/* Restrained atmosphere: a faint electric glow in one corner */}
+      {/* Restrained atmosphere: a blue glow, a warm gold glow and a faint camera photograph */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(36rem_22rem_at_100%_0%,rgb(47_128_237/0.18),transparent_70%)]"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(36rem_22rem_at_100%_0%,rgb(47_128_237/0.2),transparent_70%),radial-gradient(30rem_18rem_at_0%_100%,rgb(196_154_80/0.1),transparent_70%)]"
       />
+      <MediaTexture src={textures.camera} tone="dark" opacity={0.08} className="inset-y-0 right-0 w-full [mask-image:linear-gradient(90deg,transparent,#000_70%)] lg:w-1/2" />
 
       <Container className="pt-section-sm pb-stack-lg">
         <div className="grid grid-cols-2 gap-x-8 gap-y-stack-lg md:grid-cols-6 lg:grid-cols-12">
@@ -45,7 +48,7 @@ export function Footer() {
             <div className="inline-flex rounded-lg bg-white px-3.5 py-2.5 shadow-soft">
               <Logo preload={false} />
             </div>
-            <p className="mt-stack font-display text-h4 text-white">{site.tagline}</p>
+            <p className="mt-stack font-display text-h3 text-white italic">{site.tagline}</p>
             <p className="mt-stack-sm max-w-md text-body-sm text-silver">{footer.description}</p>
             <Button href={footer.cta.href} size="md" arrow className="mt-stack">
               {footer.cta.label}
@@ -181,7 +184,7 @@ export function Footer() {
 
       {/* Oversized wordmark along the base, sized to the viewport so it fits one line */}
       <Container aria-hidden="true" className="overflow-hidden">
-        <p className="-mb-[0.18em] font-display text-[clamp(1.5rem,7.4vw,6.9rem)] leading-none font-extrabold tracking-[-0.05em] whitespace-nowrap text-white/[0.07] select-none">
+        <p className="-mb-[0.18em] font-display text-[clamp(1.5rem,7.4vw,6.9rem)] leading-none font-medium tracking-[-0.02em] whitespace-nowrap text-gold/[0.12] italic select-none">
           {site.name}
         </p>
       </Container>

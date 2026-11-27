@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/navigation/Header";
-import { inter, manrope } from "@/lib/fonts";
+import { inter, manrope, playfair } from "@/lib/fonts";
 import { site } from "@/content/site";
 import "./globals.css";
 
@@ -29,7 +29,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en-GB" className={`${manrope.variable} ${inter.variable}`}>
+    <html lang="en-GB" className={`${playfair.variable} ${manrope.variable} ${inter.variable}`}>
       <body className="flex min-h-dvh flex-col">
         <MotionProvider>
           <Header />
